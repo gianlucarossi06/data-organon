@@ -32,7 +32,7 @@ The initial configuration is similar to the one described in OCI GG Live Labs [_
 
 ![Fig.2: Initial configuration: target ADW with Autonomous Data Guard enabled and OCI GoldenGate with single deployment](/images/2023-04-20-OCI-GG-DR-Part-I/6050731718.png)
 
-#### RegionA (**_eu-milan-01_**) initial configurations
+#### RegionA (_eu-milan-01_) initial configurations
 
 **1) OCI GoldenGate deployment:**
 
