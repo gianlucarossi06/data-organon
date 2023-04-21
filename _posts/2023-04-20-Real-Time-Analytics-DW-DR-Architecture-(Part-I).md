@@ -13,7 +13,7 @@ From the point of view of the Lakehouse ecosystem, a disaster recovery architect
 
 As a first use case, I analyze a disaster recovery solution for real time ingestion DW with OCI GoldenGate used to replicate data to a target  Autonomous Data Warehouse database.
 
-![Fig.1: Real Time DW DR architecture](/data-organon/images/2023-04-20-OCI-GG-DR-Part-I/DW-DR-Physical-Deployment.jpg)
+![Fig.1: Real Time DW DR Architecture](/data-organon/images/2023-04-20-OCI-GG-DR-Part-I/DW-DR-Physical-Deployment.jpg)
 
 OCI GoldenGate is a fully managed, native cloud service that moves data in real-time, at scale. OCI GoldenGate processes data as it moves from one or more data management systems to target systems. You can also design, run, orchestrate, and monitor data replication tasks without having to allocate or manage any compute environments.
 
