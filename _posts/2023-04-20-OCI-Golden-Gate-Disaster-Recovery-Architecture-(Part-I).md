@@ -134,7 +134,7 @@ Then you can schedule it with Linux crontab to be executed, for instance, every 
 *   **Manual OCI GG backup**: You need to create a manual backup for this deployment to produce a backup file that can be overwritten by the backup files replicated from _RegionA_**.** First, you create the bucket _GG-backup-RegionB_ as the target bucket for backup files. Then, using the OCI Console, you can create the manual OCI GG backup (_ocigg-RegionB-manual_)_:_
 
         <!--[Fig.14: RegionB, first OCI GoldenGate manual backup](/images/2023-04-20-OCI-GG-DR-Part-I/6275381382.png)-->
-           <img src="/images/2023-04-20-OCI-GG-DR-Part-I/6275381382.png" alt="Fig.14: RegionB, first OCI GoldenGate manual backup" width="250"/>
+           <img src="/images/2023-04-20-OCI-GG-DR-Part-I/6275381382.png" alt="Fig.14: RegionB, first OCI GoldenGate manual backup" width="400"/>
 
            ![Fig.15: RegionB, OCI GoldenGate backup](/images/2023-04-20-OCI-GG-DR-Part-I/6276947759.png)
 
