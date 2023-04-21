@@ -1,4 +1,3 @@
-# OCI GoldenGate Disaster Recovery Architecture - Part I
 
 A disaster recovery solution is essential to prevent severe loss of data, which can have a serious financial impact and also result in loss of customer confidence, damaging a company's reputation. As data and analytics platforms are more and more perceived as systems whose failure has those critical effects for the business, it is not uncommon that customers need a disaster recovery solution not only to meet the requirements of specific internal or external regulation but also to ensure that data consumers (including critical systems like, for instance, customer-facing applications or anti-fraud systems) can access the service without interruption, whatever may happen.
 
@@ -22,15 +21,15 @@ To provide a full Disaster Recovery solution, also OCI GoldenGate must have a de
 
 This first post shows how to configure OCI GoldenGate in a Disaster Recovery solution architecture. The second part of the post goes through the details of the operational tasks to be executed in case of disaster.
 
-## OCI GG DR Architecture Enablement
+# OCI GG DR Architecture Enablement
 
-### Initial configuration: OCI GoldenGate single deployment, ADW with Autonomous Data Guard
+## Initial configuration: OCI GoldenGate single deployment, ADW with Autonomous Data Guard
 
 The initial configuration is similar to the one described in OCI GG Live Labs [_Replicate Data Using Oracle Cloud Infrastructure GoldenGate_](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=797)_._ OCI GoldenGate extracts data from an Oracle DB and moves it to a target Oracle Autonomous Data Warehouse on OCI. The Oracle DB used as a source in this example is an Oracle ATP provisioned in a different OCI Region (RegionC _eu-amsterdam-1_, not affected by the Disaster Recovery in this example) but, in reality, it could be any other Database, whether in OCI or on-premises. The initial configuration also includes **Autonomous Data Guard** for the target Autonomous Data Warehouse database which enables a "StandBy" database in another OCI Region (_RegionB_ - _eu-frankfurt-1_)
 
 ![Fig.2: Initial configuration: target ADW with Autonomous Data Guard enabled and OCI GoldenGate with single deployment](/_posts/attachments/5980864288/6050731718.png)
 
-#### **RegionA (_eu-milan-01_) initial configurations**
+### **RegionA (_eu-milan-01_) initial configurations**
 
 **1) OCI GoldenGate deployment:**
 
@@ -59,7 +58,7 @@ The initial configuration is similar to the one described in OCI GG Live Labs [_
 
          ![Fig.7: RegionB, Autonomous Data Warehouse Standby instance for disaster recovery](/_posts/attachments/5980864288/6275398387.png)
 
-## Configuration steps to enable Disaster Recovery for OCI GoldenGate
+# Configuration steps to enable Disaster Recovery for OCI GoldenGate
 
 At high level, the OCI GoldenGate disaster recovery configuration leverages a cross-site replication of OCI GoldenGate backup files to share the OCI GoldenGate configuration among different deployments. OCI GG backup file stored in a ObjectStorage bucket in _RegionA_ is replicated by OCI ObjectStorage cross-site replication to a OCI Object Storage bucket in _RegionB_. From there it is made available as a backup file ready to be restored by the OCI GoldenGate deployment in _RegionB_.
 
@@ -67,7 +66,7 @@ Logical architecture that shows the configurations and components that enable th
 
 ![Fig.8: Disaster recovery architecture including OCI GoldenGate](/_posts/attachments/5980864288/6050731718.png)
 
-#### RegionA (eu-milan-01) configurations
+## RegionA (eu-milan-01) configurations
 
 **1) Create Object Storage Bucket to store OCI GG backup files: Y**ou need to use an object storage bucket to store the OCI GG backup files to be replicated in the secondary OCI Region. You create a bucket (_GG-backup-RegionA)_ with a standard tier.
 
@@ -114,7 +113,7 @@ Then you can schedule it with Linux crontab to be executed, for instance, every 
 
 ![Fig.12: Object Storage bucket replication policy](/_posts/attachments/5980864288/6209012559.png)
 
-### Region B (eu-frankfurt-01) configurations
+## Region B (eu-frankfurt-01) configurations
 
 **1) Create OCI GoldenGate secondary deployment.** It's the OCI GG "Standby" deployment in _RegionB_. Initially it can be empty, with no extract or replicat process configured. In case of disaster in _RegionA_, it will restore the proper deployment configuration from the backup file of the of _RegionA_ OCI GG deployment.
 
@@ -216,9 +215,9 @@ Creation of the Event Service rule:
 
 Whenever an OCI GG backup file is replicated (through Object Storage Cross-Region Replication) from the bucket _GG-backup-RegionA_ in _RegionA_ to the bucket _cross-GG-backup-RegionA_ in _RegionB,_ this rule triggers the OCI Function that copies the file in the bucket _GG-backup-RegionB_, ready to be restored by the OCI GG secondary deployment.
 
-## Additional Notes
+# Additional Notes
 
-### Regions specular configuration
+## Regions specular configuration
 
 In this post, I start with the primary region (_RegionA_) configurations, and then I describe the secondary region (_RegionB_) ones. Configurations differ, but in reality, primary region and secondary region should have specular configurations because primary and secondary are only temporary concepts. A primary region can switch to secondary region, and vice versa, at any time.
 
@@ -239,6 +238,6 @@ The final complete target architecture looks like the picture below:
 
 ![Fig.21: Full primary/secondary Region architecture configuration](/_posts/attachments/5980864288/6284983879.png)
 
-### Active secondary OCI GG deployment
+## Active secondary OCI GG deployment
 
 In this post, I suggest keeping off the secondary OCI GG deployment to save Oracle Cloud credits. But if the RTO of the solution is a priority, you may want to keep active the OCI GG secondary deployment (eventually scaled down) and automatically restore a backup file whenever a new backup is copied in the bucket _GG-backup-RegionB._ To do this, you need to create an OCI Function that executes an OCI GG restore and an Event Rule that triggers that Function when an object create/update event occurs on the bucket _GG-backup-RegionB._
