@@ -11,7 +11,7 @@ As such, this architecture includes many service types that allow you to cover a
 
 From the point of view of the Lakehouse ecosystem, a disaster recovery architecture deployment must therefore take into consideration from time to time which services must guarantee continuity in the event of a critical failure. Surely you must consider the core components of the persistence layer (i.e., Object Storage and Autonomous Data Warehouse) but you may also need to include the data ingestion and processing services (e.g.: OCI Data Integration, OCI GoldenGate, Oracle Data Integrator, OCI Data Flow) and the data access and interpretation services (e.g., Oracle Analytics Cloud, OCI Data Science, APEX and Oracle Rest Data Services) that are integral parts of the overall solution.
 
-![Fig.1: Real Time DW architecture with Disaster Recovery](/data-organon/images/2023-04-20-OCI-GG-DR-Part-I/DW-DR-Physical-Deployment.jpg)
+![Fig.1: Real Time DW DR architecture](/data-organon/images/2023-04-20-OCI-GG-DR-Part-I/DW-DR-Physical-Deployment.jpg)
 
 As a first use case, I analyze a disaster recovery solution for OCI GoldenGate used to replicate data to a target Autonomous Data Warehouse.
 
