@@ -1,3 +1,5 @@
+![](/images/2023-04-20-OCI-GG-DR-Part-I/forest-growing.jpg)
+
 ## **Introduction**
 
 A disaster recovery solution is essential to prevent severe loss of data, which can have a serious financial impact and also result in loss of customer confidence, damaging a company's reputation. As data and analytics platforms are more and more perceived as systems whose failure has those critical effects for the business, it is not uncommon that customers need a disaster recovery solution not only to meet the requirements of specific internal or external regulation but also to ensure that data consumers (including critical systems like, for instance, customer-facing applications or anti-fraud systems) can access the service without interruption, whatever may happen.
