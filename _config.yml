@@ -8,8 +8,8 @@ description: >- # this means to ignore newlines until "baseurl:"
   data management platform in the Cloud. Although I work
   for Oracle, the views expressed on this blog are my own and do not necessarily
   reflect the views of Oracle.
-baseurl: "data-organon/"
-url: "https://gianlucarossi06.github.io/"
+baseurl: ""
+url: "https://gianlucarossi06.github.io/data-organon/"
 github_username:   "gianlucarossi06"
 google_analytics: "G-WP81WC62NJ"
 
