@@ -225,7 +225,7 @@ Whenever an OCI GG backup file is replicated (through Object Storage Cross-Regio
 
 In this post, I start with the primary region (_RegionA_) configurations, and then I describe the secondary region (_RegionB_) ones. Configurations differ, but in reality, primary region and secondary region should have specular configurations because primary and secondary are only temporary concepts. A primary region can switch to secondary region, and vice versa, at any time.
 
-Therefore you should consider to add:
+Therefore, you should consider to add:
 
 In _RegionB_:
 
