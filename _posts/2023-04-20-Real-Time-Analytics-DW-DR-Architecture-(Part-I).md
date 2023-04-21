@@ -25,13 +25,13 @@ To provide a full Disaster Recovery solution, also OCI GoldenGate must have a de
 
 This first post shows how to configure OCI GoldenGate in a Disaster Recovery solution architecture. The second part of the post goes through the details of the operational tasks to be executed in case of disaster.
 
-## **OCI GG DR Architecture Enablement**
+## **Real Time Data Warehouse DR Architecture Enablement**
 
-### **Initial configuration: OCI GoldenGate single deployment**
+### **Initial configuration: ADW with Autonomous Data Guard and OCI GoldenGate with single deployment**
 
 The initial configuration is similar to the one described in OCI GG Live Labs [_Replicate Data Using Oracle Cloud Infrastructure GoldenGate_](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=797)_._ OCI GoldenGate extracts data from an Oracle DB and moves it to a target Oracle Autonomous Data Warehouse on OCI. The Oracle DB used as a source in this example is an Oracle ATP provisioned in a different OCI Region (RegionC _eu-amsterdam-1_, not affected by the Disaster Recovery in this example) but, in reality, it could be any other Database, whether in OCI or on-premises. The initial configuration also includes **Autonomous Data Guard** for the target Autonomous Data Warehouse database which enables a "StandBy" database in another OCI Region (_RegionB_ - _eu-frankfurt-1_)
 
-![Fig.2: Initial configuration: target ADW with Autonomous Data Guard enabled and OCI GoldenGate with single deployment](/data-organon/images/2023-04-20-OCI-GG-DR-Part-I/6050731718.png)
+![Fig.2: Initial configuration: target ADW with Autonomous Data Guard enabled and OCI GoldenGate with single deployment](/data-organon/images/2023-04-20-OCI-GG-DR-Part-I/initial-configuration-regionA.png)
 
 #### **RegionA (_eu-milan-01_) initial configurations**
 
