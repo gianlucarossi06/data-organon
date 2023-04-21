@@ -46,7 +46,7 @@ The initial configuration is similar to the one described in OCI GG Live Labs [_
          ![Fig.3: RegionA, connections assigned to OCI GoldenGate deployment](/images/2023-04-20-OCI-GG-DR-Part-I/6276959907.png)
 
 *   **Deployment backup**: Only OCI GG automatic backup
-*   **Processes**: This deployment has one extract (_UAEXT_) process that extracts data from the _SourceDB_ and one replicat process (_REP_) that replicates the data to the _TargetOCIDB._
+*   **Processes**: This deployment has one extract (_UAEXT_) process that extracts data from the _SourceDB_ and one replicat process (_REP_) that replicates the data to the ADW _TargetOCIDB._
 
        ![Fig.4: RegionA: OCI GoldenGate extract and replicat process](/images/2023-04-20-OCI-GG-DR-Part-I/6276960234.png)
 
