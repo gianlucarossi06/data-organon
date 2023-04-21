@@ -77,7 +77,7 @@ Logical architecture that shows the configurations and components that enable th
 
 **2) Enable OCI GoldenGate manual backup:** the solution is based on the possibility to share OCI GG backup files between OCI GG deployments that are in different OCI Regions. As a standard, OCI GoldenGate deployments perform an automatic backup once a day. You can use those backups to restore your deployment, but you don't have direct access to the related backup files. You need to manually create an OCI GG backup in order to be able to save and manage the related files in an Object Storage bucket. You can do it through the OCI console, API, SDK or OCI-CLI commands. You can leverage an OCI Compute VM with Linux OS in which you install the oci-cli libraries (see [Oracle documentation](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliinstall.htm) for details) and create a script to execute the OCI GG deployment backup command.
 
-The oci-cli command is:
+The _oci-cli_ command is:
 
 _oci goldengate deployment-backup create_
 
