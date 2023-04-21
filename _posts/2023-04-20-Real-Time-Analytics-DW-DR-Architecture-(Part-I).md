@@ -11,9 +11,9 @@ As such, this architecture includes many service types that allow you to cover a
 
 From the point of view of the Lakehouse ecosystem, a disaster recovery architecture deployment must therefore take into consideration from time to time which services must guarantee continuity in the event of a critical failure. Surely you must consider the core components of the persistence layer (i.e., Object Storage and Autonomous Data Warehouse) but you may also need to include the data ingestion and processing services (e.g.: OCI Data Integration, OCI GoldenGate, Oracle Data Integrator, OCI Data Flow) and the data access and interpretation services (e.g., Oracle Analytics Cloud, OCI Data Science, APEX and Oracle Rest Data Services) that are integral parts of the overall solution.
 
-![Fig.1: Sample of physical deployment of Lakehouse architecture with Disaster Recovery](/data-organon/images/2023-04-20-OCI-GG-DR-Part-I/6524352535.png)
+As a first use case, I analyze a disaster recovery solution for a real-time data ingestion with OCI GoldenGate to a target DW running on Autonomous Data Warehouse.
 
-As a first use case, I analyze a disaster recovery solution for OCI GoldenGate used to replicate data to a target Autonomous Data Warehouse.
+![Fig.1: Sample of physical deployment of Lakehouse architecture with Disaster Recovery](/data-organon/images/2023-04-20-OCI-GG-DR-Part-I/6524352535.png)
 
 OCI GoldenGate is a fully managed, native cloud service that moves data in real-time, at scale. OCI GoldenGate processes data as it moves from one or more data management systems to target systems. You can also design, run, orchestrate, and monitor data replication tasks without having to allocate or manage any compute environments.
 
