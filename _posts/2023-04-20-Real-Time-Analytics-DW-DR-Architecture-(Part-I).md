@@ -11,9 +11,9 @@ As such, this architecture includes many service types that allow you to cover a
 
 From the point of view of the Lakehouse ecosystem, a disaster recovery architecture deployment must therefore take into consideration from time to time which services must guarantee continuity in the event of a critical failure. Surely you must consider the core components of the persistence layer (i.e., Object Storage and Autonomous Data Warehouse) but you may also need to include the data ingestion and processing services (e.g.: OCI Data Integration, OCI GoldenGate, Oracle Data Integrator, OCI Data Flow) and the data access and interpretation services (e.g., Oracle Analytics Cloud, OCI Data Science, APEX and Oracle Rest Data Services) that are integral parts of the overall solution.
 
-As a first use case, I analyze a disaster recovery solution for a real-time data ingestion with OCI GoldenGate to a target DW running on Autonomous Data Warehouse.
-
 ![Fig.1: Sample of physical deployment of Lakehouse architecture with Disaster Recovery](/data-organon/images/2023-04-20-OCI-GG-DR-Part-I/6524352535.png)
+
+As a first use case, I analyze a disaster recovery solution for OCI GoldenGate used to replicate data to a target Autonomous Data Warehouse.
 
 OCI GoldenGate is a fully managed, native cloud service that moves data in real-time, at scale. OCI GoldenGate processes data as it moves from one or more data management systems to target systems. You can also design, run, orchestrate, and monitor data replication tasks without having to allocate or manage any compute environments.
 
@@ -25,13 +25,13 @@ To provide a full Disaster Recovery solution, also OCI GoldenGate must have a de
 
 This first post shows how to configure OCI GoldenGate in a Disaster Recovery solution architecture. The second part of the post goes through the details of the operational tasks to be executed in case of disaster.
 
-## **Real Time Data Warehouse DR Architecture Enablement**
+## **OCI GG DR Architecture Enablement**
 
-### **Initial configuration: ADW with Autonomous Data Guard and OCI GoldenGate with single deployment**
+### **Initial configuration: OCI GoldenGate single deployment**
 
 The initial configuration is similar to the one described in OCI GG Live Labs [_Replicate Data Using Oracle Cloud Infrastructure GoldenGate_](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=797)_._ OCI GoldenGate extracts data from an Oracle DB and moves it to a target Oracle Autonomous Data Warehouse on OCI. The Oracle DB used as a source in this example is an Oracle ATP provisioned in a different OCI Region (RegionC _eu-amsterdam-1_, not affected by the Disaster Recovery in this example) but, in reality, it could be any other Database, whether in OCI or on-premises. The initial configuration also includes **Autonomous Data Guard** for the target Autonomous Data Warehouse database which enables a "StandBy" database in another OCI Region (_RegionB_ - _eu-frankfurt-1_)
 
-![Fig.2: Initial configuration: target ADW with Autonomous Data Guard enabled and OCI GoldenGate with single deployment](/data-organon/images/2023-04-20-OCI-GG-DR-Part-I/initial-configuration-regionA.png)
+![Fig.2: Initial configuration: target ADW with Autonomous Data Guard enabled and OCI GoldenGate with single deployment](/data-organon/images/2023-04-20-OCI-GG-DR-Part-I/Lakehouse DR @OCI - v1.0-Physical Deployment.jpg)
 
 #### **RegionA (_eu-milan-01_) initial configurations**
 
@@ -135,7 +135,7 @@ Then you can schedule it with Linux crontab to be executed, for instance, every 
 *   **Manual OCI GG backup**: You need to create a manual backup for this deployment to produce a backup file that can be overwritten by the backup files replicated from _RegionA_**.** First, you create the bucket _GG-backup-RegionB_ as the target bucket for backup files. Then, using the OCI Console, you can create the manual OCI GG backup (_ocigg-RegionB-manual_)_:_
 
         <!--[Fig.14: RegionB, first OCI GoldenGate manual backup](/data-organon/images/2023-04-20-OCI-GG-DR-Part-I/6275381382.png)-->
-<img src="/data-organon/images/2023-04-20-OCI-GG-DR-Part-I/6275381382.png" alt="Fig.14: RegionB, first OCI GoldenGate manual backup" width="400"/>
+<img src="/data-organon/images/2023-04-20-OCI-GG-DR-Part-I/6275381382.png" alt="Fig.14: RegionB, first OCI GoldenGate manual backup" width="350"/>
 
            ![Fig.15: RegionB, OCI GoldenGate backup](/data-organon/images/2023-04-20-OCI-GG-DR-Part-I/6276947759.png)
 
@@ -245,14 +245,4 @@ The final complete target architecture looks like the picture below:
 
 ### **Active secondary OCI GG deployment**
 
-In this post, I suggest keeping off the secondary OCI GG deployment to save Oracle Cloud credits. But if the RTO of the solution is a priority, you may want to keep active the OCI GG secondary deployment (eventually scaled down) and automatically restore a backup file whenever a new backup is copied in the bucket _GG-backup-RegionB._ To do this, you need to create an OCI Function that executes an OCI GG restore and an Event Rule that triggers that Function when an object create/update event occurs on the bucket _GG-backup-RegionB.
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WP81WC62NJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-WP81WC62NJ');
-</script>
+In this post, I suggest keeping off the secondary OCI GG deployment to save Oracle Cloud credits. But if the RTO of the solution is a priority, you may want to keep active the OCI GG secondary deployment (eventually scaled down) and automatically restore a backup file whenever a new backup is copied in the bucket _GG-backup-RegionB._ To do this, you need to create an OCI Function that executes an OCI GG restore and an Event Rule that triggers that Function when an object create/update event occurs on the bucket _GG-backup-RegionB._
