@@ -3,7 +3,7 @@ title: Real Time Analytics DW DR Architecture (Part I)
 <!--description: Comparison of options for storing large, complex JSON documents in Oracle Autonomous Database.-->
 ---
 
-![](/data-organon/images/2023-04-20-OCI-GG-DR-Part-I/forest-growing.jpg)
+![](/data-organon/images/2023-04-20-OCI-GG-DR-Part-I/DISASTER-RECOVERY-1.jpg)
 
 ## **Introduction**
 
