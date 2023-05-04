@@ -260,10 +260,10 @@ The final complete target architecture looks like the picture below:
 
 In this post, I suggest keeping off the secondary OCI GG deployment to save Oracle Cloud credits. But if the RTO of the solution is a priority, you may want to keep active the OCI GG secondary deployment (eventually scaled down) and automatically restore a backup file whenever a new backup is copied in the bucket _GG-backup-RegionB._ To do this, you need to create an OCI Function that executes an OCI GG restore and an Event Rule that triggers that Function when an object create/update event occurs on the bucket _GG-backup-RegionB._
 
-##_Credits_
+## _Credits_
 
-Valuable ideas, suggestions, reviews for this post have been kindly provided by:
+Valuable ideas, suggestions, and reviews for this post have been kindly provided by:
 
-   - Claudia Filippini, Oracle Account Cloud Engineer
-   - Eloi Lopez, Oracle Domain Specialist Cloud Engineer - Data Management
-   - Alessandro Stella, Oracle Account Cloud Engineer
+   - **Claudia Filippini**, Oracle Account Cloud Engineer
+   - **Eloi Lopez**, Oracle Domain Specialist Cloud Engineer - Data Management
+   - **Alessandro Stella**, Oracle Account Cloud Engineer
