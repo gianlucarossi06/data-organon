@@ -58,14 +58,13 @@ The initial configuration is similar to the one described in OCI GG Live Labs [_
 **2) Autonomous Data Warehouse deployment:**
 
 *   **Instance Name**: _OCIDBTARGET01_
-
     ![Fig.3: RegionA, ADW instance](/data-organon/images/2023-04-20-OCI-GG-DR-Part-I/initial-adw-regionA.png)
 
 
 ## **Configuration steps to enable Disaster Recovery for Real Time DW**
 
-For this real-time DW architecture example, we configure a cross-Region Disaster Discovery architecture. Both ADW and OCI GoldenGate have two deployments in two different OCI Region. 
-The following logical architecture shows the configurations and components that enable the real-time DW cross-region disaster recovery solution:
+For this real-time DW architecture example, we configure a cross-Region Disaster Discovery architecture. Both ADW and OCI GoldenGate will have two deployments in two different OCI Region. 
+The following logical architecture shows the target configurations and components for the real-time DW cross-region disaster recovery solution:
 
 ![Fig.8: Real Time DW disaster recovery architecture](/data-organon/images/2023-04-20-OCI-GG-DR-Part-I/6050731718.png)
 
@@ -74,14 +73,12 @@ The following logical architecture shows the configurations and components that 
 The DR configuration for ADW leverages **Autonomous Data Guard**. In the target Autonomous Data Warehouse database in _RegionA_ you enable a remote "StandBy" database in another OCI Region (_RegionB_ - _eu-frankfurt-1_)
 
 *   **Autonomous Data Guard:** enablement on the primary instance _OCIDBTARGET01_: 
+       ![Fig.5: RegionA, Autonomous Data Guard enablement](/data-organon/images/2023-04-20-OCI-GG-DR-Part-I/6050737112.png)
+       ![Fig.6: RegionA, Autonomous Data Warehouse Primary instance for disaster recovery](/data-organon/images/2023-04-20-OCI-GG-DR-Part-I/6050737123.png)
 
-         ![Fig.5: RegionA, Autonomous Data Guard enablement](/data-organon/images/2023-04-20-OCI-GG-DR-Part-I/6050737112.png)
-
-         ![Fig.6: RegionA, Autonomous Data Warehouse Primary instance for disaster recovery](/data-organon/images/2023-04-20-OCI-GG-DR-Part-I/6050737123.png)
 
 *   Remote _Standby_ database (_OCIDBTARGET01\_Remote)_ in Region B (_eu-frankfurt-1_)
-
-         ![Fig.7: RegionB, Autonomous Data Warehouse Standby instance for disaster recovery](/data-organon/images/2023-04-20-OCI-GG-DR-Part-I/6275398387.png)
+![Fig.7: RegionB, Autonomous Data Warehouse Standby instance for disaster recovery](/data-organon/images/2023-04-20-OCI-GG-DR-Part-I/6275398387.png)
 
 ### **Disaster Recovery configuration for OCI GoldenGate**
 
