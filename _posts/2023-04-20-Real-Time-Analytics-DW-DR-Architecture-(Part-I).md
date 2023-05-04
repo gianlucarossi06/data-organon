@@ -29,15 +29,13 @@ To provide a full Disaster Recovery solution, also OCI GoldenGate must have a de
 
 This first post shows how to enable the Disaster Recovery solution architecture for this use case. The second part of the post goes through the details of the operational tasks to be executed in case of disaster.
 
-## **Real Time DW DR Architecture Enablement**
-
-### **Initial configuration: Autonomous Data Warehouse and OCI GoldenGate with single deployments**
+## **Initial configuration: Autonomous Data Warehouse and OCI GoldenGate with single deployments**
 
 The initial configuration is similar to the one described in OCI GG Live Labs [_Replicate Data Using Oracle Cloud Infrastructure GoldenGate_](https://apexapps.oracle.com/pls/apex/dbpm/r/livelabs/view-workshop?wid=797)_._ OCI GoldenGate extracts data from an Oracle DB and moves it to a target Oracle Autonomous Data Warehouse on OCI. The Oracle DB used as a source in this example is an Oracle ATP provisioned in a different OCI Region (RegionC _eu-amsterdam-1_, not affected by the Disaster Recovery in this example) but, in reality, it could be any other Database, whether in OCI or on-premises.
 
 ![Fig.2: Initial configuration: target ADW and OCI GoldenGate with single deployments](/data-organon/images/2023-04-20-OCI-GG-DR-Part-I/initial-configuration-regionA.png)
 
-#### **RegionA (_eu-milan-01_) initial configurations**
+### **RegionA (_eu-milan-01_) initial configurations**
 
 **1) OCI GoldenGate deployment:**
 
@@ -260,3 +258,11 @@ The final complete target architecture looks like the picture below:
 ### **Active secondary OCI GG deployment**
 
 In this post, I suggest keeping off the secondary OCI GG deployment to save Oracle Cloud credits. But if the RTO of the solution is a priority, you may want to keep active the OCI GG secondary deployment (eventually scaled down) and automatically restore a backup file whenever a new backup is copied in the bucket _GG-backup-RegionB._ To do this, you need to create an OCI Function that executes an OCI GG restore and an Event Rule that triggers that Function when an object create/update event occurs on the bucket _GG-backup-RegionB._
+
+##_Credits_
+
+Valuable ideas, suggestions, reviews for this post have been kindly provided by:
+
+   - Claudia Filippini, Oracle Account Cloud Engineer
+   - Eloi Lopez, Oracle Domain Specialist Cloud Engineer - Data Management
+   - Alessandro Stella, Oracle Account Cloud Engineer
