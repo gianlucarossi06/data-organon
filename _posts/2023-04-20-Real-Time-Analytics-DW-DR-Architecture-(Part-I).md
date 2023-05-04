@@ -73,11 +73,10 @@ The DR configuration for ADW leverages **Autonomous Data Guard**. In the target 
 *   **Autonomous Data Guard:** enablement on the primary instance _OCIDBTARGET01_: 
        ![Fig.5: RegionA, Autonomous Data Guard enablement](/data-organon/images/2023-04-20-OCI-GG-DR-Part-I/6050737112.png)
        ![Fig.6: RegionA, Autonomous Data Warehouse Primary instance for disaster recovery](/data-organon/images/2023-04-20-OCI-GG-DR-Part-I/6050737123.png)
-
 <br>
 *   Remote _Standby_ database (_OCIDBTARGET01\_Remote)_ in Region B (_eu-frankfurt-1_)
 
-![Fig.7: RegionB, Autonomous Data Warehouse Standby instance for disaster recovery](/data-organon/images/2023-04-20-OCI-GG-DR-Part-I/6275398387.png)
+       ![Fig.7: RegionB, Autonomous Data Warehouse Standby instance for disaster recovery](/data-organon/images/2023-04-20-OCI-GG-DR-Part-I/6275398387.png)
 
 ### **Disaster Recovery configuration for OCI GoldenGate**
 
