@@ -1,6 +1,6 @@
 ---
 title: Real Time Analytics DW DR Architecture (Part II)
-<!--description: Recovery Operations.-->
+description: Recovery Operations
 ---
 
 ![](/data-organon/images/2023-04-20-OCI-GG-DR-Part-II/DISASTER-RECOVERY-2.jpg)
