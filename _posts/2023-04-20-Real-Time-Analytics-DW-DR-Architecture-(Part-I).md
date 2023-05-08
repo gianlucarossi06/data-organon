@@ -27,7 +27,7 @@ To meet Disaster Recovery requirements, another Autonomous Data Warehouse has be
 
 To provide a full Disaster Recovery solution, also OCI GoldenGate must have a deployment in the other OCI Region ready to ingest data to the Oracle _StandBy_ Database (become Primary)  whenever a disaster or a failure in the primary region occurs.
 
-This first post shows how to enable the Disaster Recovery solution architecture for this use case. The second part of the post goes through the details of the operational tasks to be executed in case of disaster.
+This first post shows how to enable the Disaster Recovery solution architecture for this use case. The second part of the post - [Real Time Analytics DW DR Architecture (Part II)](https://gianlucarossi06.github.io/data-organon/2023/04/20/Real-Time-Analytics-DW-DR-Architecture-(Part-II).html) - goes through the details of the operational tasks to be executed in case of disaster.
 
 ## **Initial configuration: Autonomous Data Warehouse and OCI GoldenGate with single deployments**
 
