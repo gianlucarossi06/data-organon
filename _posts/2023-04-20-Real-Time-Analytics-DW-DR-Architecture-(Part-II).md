@@ -7,7 +7,7 @@ description: Recovery Operations.
 
 ## **Introduction**
 
-In the first part of the blog [_Real Time Analytics DW DR Architecture (Part I)_](https://gianlucarossi06.github.io/data-organon/2023/04/20/Real-Time-Analytics-DW-DR-Architecture-(Part-I\).html), I described how to enable a disaster recovery architecture for a Real-Time Data Warehouse solution in OCI as depicted in the picture below:
+In the first part of the blog [_Real Time Analytics DW DR Architecture (Part I)_](https://gianlucarossi06.github.io/data-organon/2023/04/20/Real-Time-Analytics-DW-DR-Architecture-(Part-I).html), I described how to enable a disaster recovery architecture for a Real-Time Data Warehouse solution in OCI as depicted in the picture below:
 
 ![Fig.1:  OCI GoldenGate disaster recovery architecture](/data-organon/images/2023-04-20-OCI-GG-DR-Part-II//6310899344.png)
 
