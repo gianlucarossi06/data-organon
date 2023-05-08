@@ -1,4 +1,3 @@
-
 ---
 title: Real Time Analytics DW DR Architecture (Part II)
 <!--description: Recovery Operations.-->
@@ -6,7 +5,7 @@ title: Real Time Analytics DW DR Architecture (Part II)
 
 ![](/data-organon/images/2023-04-20-OCI-GG-DR-Part-II/DISASTER-RECOVERY-2.jpg)
 
-## Introduction
+## **Introduction**
 
 In the first part of the blog [_Real Time Analytics DW DR Architecture (Part I)_](https://gianlucarossi06.github.io/data-organon/2023/04/20/Real-Time-Analytics-DW-DR-Architecture-(Part-I\).html), I described how to enable a disaster recovery architecture for a Real-Time Data Warehouse solution in OCI as depicted in the picture below:
 
@@ -30,9 +29,9 @@ In _RegionB:_
 
 In the second part of the blog, I simulate a disaster in _RegionA_ and describe the operational tasks that you need to perform to properly start the workload in _RegionB_.
 
-## Real-Time DW failure simulation
+## **Real-Time DW failure simulation**
 
-### Initial State
+### **Initial State**
 
 Before a failure occurs, the workload is up and running properly in the primary OCI Region (RegionA, _eu-milan-1_). OCI GoldenGate processes are running and ready to update in real-time the primary ADW with changes that occur in the SourceDB. In the secondary OCI Region (RegionB, _eu-frankfurt-1_) the _Standby_ ADW instance is active and constantly aligned with the primary instance, while the OCI GoldenGate secondary deployment is inactive.
 
@@ -62,7 +61,7 @@ RegionB, OCI GoldenGate manual backup file from RegionA replicated in the Object
 RegionA, OCI GoldenGate backup file copied (by an OCI Function) in the Object Storage bucket reserved for OCI GG manual backup in RegionB:
 ![_Fig.9: RegionA, OCI GoldenGate backup file copied (by an OCI Function) in the Object Storage bucket reserved for OCI GG manual backup in RegionB](/data-organon/images/2023-04-20-OCI-GG-DR-Part-II//6471379719.png)
 
-### Simulation of failure in RegionA
+### **Simulation of failure in RegionA**
 
 To simulate a failure in RegionA, I just turn off the primary OCI GoldenGate deployment and the primary ADW instance in RegionA.
 
@@ -79,15 +78,13 @@ After the failure simulation, I insert a record in a table in the SourceDB that 
 
 As an example, I insert a row in the table _SRC\_REGION_ of _SourceDB_ configured in the OCI GoldenGate extract parameter file.
 
-Connecting with SQL Developer Web to the _SourceDB_, I insert a record and commit the transaction.
-
+Connecting with SQL Developer Web to the _SourceDB_, I insert a record and commit the transaction:
 ![_Fig.13: Insert record in the SourceDB table (SRC\_REGION)_](/data-organon/images/2023-04-20-OCI-GG-DR-Part-II//6486268289.png)
 
 The new record is then visible in the _SRC\_REGION_ table of SourceDB:
-
 ![_Fig.14: New record present in the SourceDB table (SRC\_REGION)_](/data-organon/images/2023-04-20-OCI-GG-DR-Part-II//6486268307.png)
 
-### Real-Time DW Recovery Operational Tasks
+### **Real-Time DW Recovery Operational Tasks**
 
 You need to execute some operational tasks to properly start the workload in RegionB:
 
@@ -193,9 +190,9 @@ RegionB, record inserted during unavailability in the SourceDB, recovered in the
 ![_Fig.32: RegionB, record inserted during unavailability in the SourceDB, recovered in the target ADW table._](/data-organon/images/2023-04-20-OCI-GG-DR-Part-II//6524351951.png)
 
 
-## Possible Enhancements
+## **Possible Enhancements**
 
-### Automation Available
+### **Automation Available**
 
 The five workload recovery steps listed above can be automated by leveraging the OCI and GoldenGate APIs.
 
@@ -226,8 +223,7 @@ Regarding Steps #5 (**Start OCI GoldenGate _Extract_ and _Replicat_ process**), 
  *   [Oracle Rest Data Services on ADW](https://docs.oracle.com/en/cloud/paas/autonomous-database/adbsa/ords-rest.html)
  *   [GoldenGate REST API](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/sdks.htm)
 
-
- ## _Credits_
+## _Credits_
 
 Valuable ideas, suggestions, and reviews for this post have been kindly provided by:
 
