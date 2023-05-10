@@ -1,5 +1,5 @@
 ---
-title: Real Time Analytics DW DR Architecture (Part II) - _DR Recovery Operations_
+title: Real Time Analytics DW DR Architecture (Part II) - DR Recovery Operations
 description: DR Recovery Operations.
 ---
 
