@@ -1,5 +1,5 @@
 ---
-title: Real Time Analytics DW DR Architecture (Part I)
+title: Real Time Analytics DW DR Architecture (Part I) - DR Architecture Configuration
 description: Disaster Recovery Architecture Configuration.
 ---
 
