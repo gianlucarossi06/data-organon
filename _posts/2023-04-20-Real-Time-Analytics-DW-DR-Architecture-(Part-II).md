@@ -211,7 +211,7 @@ For more information, please refer to this Oracle documentation:
 *   [OCI GoldenGate API Reference and Endpoints](https://docs.oracle.com/en-us/iaas/api/#/en/goldengate/20200407/)
 *   [SDKs and Command Line Interface](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/sdks.htm)
 
-Regarding Steps #5 (**Start OCI GoldenGate _Extract_ and _Replicat_ process**), you need to perform a couple of operations:
+Regarding Steps **#5** (**Start OCI GoldenGate _Extract_ and _Replicat_ process**), you need to perform a couple of operations:
 
  *   Check the CSN of the Replicat process in the checkpoint table of the target DB. To do this, you can query directly the DB table or call an Oracle REST API created on that purpose with Oracle Rest Data Service.
  *   Start the Extract or Replicat processes by leveraging GoldenGate REST API. The GoldenGate REST API endndpont can be found by running the following command:
