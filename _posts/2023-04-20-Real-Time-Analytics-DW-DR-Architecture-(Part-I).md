@@ -124,7 +124,9 @@ Then you can schedule it with Linux crontab to be executed, for instance, every 
 
 ![Fig.11: Scheduling of the shell script with Linux crontab](/data-organon/images/2023-04-20-OCI-GG-DR-Part-I/6228856788.png)
 
-**NOTE**: The OCI GG backup purpose is to save the configuration of the deployment. As such, you may want to schedule it less frequently, depending on the size of the backup. A good practice is also to generate a manual backup every time a configuration change is made, while maintaining the automatically scheduled backup for safety.
+**NOTE 1**: The OCI GG backup purpose is to save the configuration of the deployment. As such, you may want to schedule it less frequently, depending on the size of the backup. A good practice is also to generate a manual backup every time a configuration change is made, while maintaining the automatically scheduled backup for safety.
+
+**NOTE 2**: You may want to create and share multiple backups in case one gets corrupted. To enable this, you can create different backup files with different scheduling in RegionA (e.g., _bkp-ocigg1_, _bkp-ocigg2_, _bkp-ocigg3_) and copy just the last one to the target bucket _GG-backup-RegionA_ using an OCI Function (you need to modify accordingly the OCI Function example described later in this blog).
 
 **3) Enable Object Storage cross-region replication policy:** You need to automatically replicate the OCI GG backup files to _RegionB_. You enable the Object Storage cross-region replication on the bucket _GG-backup-RegionA_ having as a target the bucket _Cross-GG-backup-RegionA_ previously created in _RegionB_. With this cross-region replication, whenever a new backup file of the _ocigg-RegionA_ deployment is stored in the bucket _GG-Backup-RegionA_ a corresponding file is replicated in the _Cross-GG-backup-RegionA_ bucket in _RegionB_.
 
