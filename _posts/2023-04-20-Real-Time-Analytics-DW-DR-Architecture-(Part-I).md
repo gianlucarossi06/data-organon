@@ -85,7 +85,7 @@ At high level, the OCI GoldenGate disaster recovery configuration leverages a cr
 
 #### **RegionA (_eu-milan-01_) configurations**
 
-**1) Create Object Storage Bucket to store OCI GG backup files: Y**ou need to use an object storage bucket to store the OCI GG backup files to be replicated in the secondary OCI Region. You create a bucket (_GG-backup-RegionA)_ with a standard tier.
+**1) Create Object Storage Bucket to store OCI GG backup files:** You need to use an object storage bucket to store the OCI GG backup files to be replicated in the secondary OCI Region. You create a bucket (_GG-backup-RegionA)_ with a standard tier.
 
 ![Fig.9: Bucket to store OCI GoldenGate manual backups](/data-organon/images/2023-04-20-OCI-GG-DR-Part-I/6275381367.png)
 
