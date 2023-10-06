@@ -3,7 +3,7 @@ title: Zero ETL Lakehouse in Oracle Cloud
 description: Lakehouse solution in OCI with minimized or no ETL.
 ---
 
-![](/data-organon/images/2023-09-30-ZEROETL-LAKEHOUSE-OCI/ZERO-ETL.jpg)
+![](/data-organon/images/2023-09-30-ZeroETL-Lakehouse-Oracle-Cloud/ZERO-ETL.jpg)
 
 ## **Introduction**
 
@@ -13,7 +13,7 @@ Data extraction involves extracting data from homogeneous or heterogeneous sourc
 
 Conventionally, at a high level, an ETL process schema can be designed as follows:
 
-![Conventional ETL process ](/data-organon/images/2023-09-30-ZEROETL-LAKEHOUSE-OCI/conventional-etl.png)
+![Conventional ETL process ](/data-organon/images/2023-09-30-ZeroETL-Lakehouse-Oracle-Cloud/conventional-etl.png)
 
 But why do we need ETL processes?
 Data are becoming more and more essential for business decisions. Insights derived from valuable information can have a very significant impact on the success of an organization. With the exponential growth of data volume, data sources, and data types, the ability to validate, cleanse, integrate, standardize, curate, and aggregate data in well- orchestrated and governed pipelines has achieved a valuable priority in the data management processes of organizations.
@@ -49,14 +49,14 @@ Leveraging Oracle Cloud services for Analytical Data Platform, you can build Lak
 For a OCI Lakehouse solution in the context of Zero ETL, I will focus on specific capabilities and features of some of services descripted in the reference architecture.
 Let's consider the following simplified logical architecture:
 
-![Initial Scenario - Potential Data Sources](/data-organon/images/2023-09-30-ZEROETL-LAKEHOUSE-OCI/initial-scenario-zeroetl-lakehouse-oci.png)
+![Initial Scenario - Potential Data Sources](/data-organon/images/2023-09-30-ZeroETL-Lakehouse-Oracle-Cloud/initial-scenario-zeroetl-lakehouse-oci.png)
 
 It shows many potential data sources for an OCI Analytical Data Platform that is based on Oracle Autonomous Database as data server engine.
 What are the features of the **OCI Data Platform** that you could use to leverage those sources for your analytics needs following a **Zero ETL approach**?
 
 Let's begin with minimizing data movement and latency:
 
-![OCI Lakehouse - Minimizing data movement and latency capabilties](/data-organon/images/2023-09-30-ZEROETL-LAKEHOUSE-OCI/extract-scenario-zeroetl-lakehouse-oci.png)
+![OCI Lakehouse - Minimizing data movement and latency capabilties](/data-organon/images/2023-09-30-ZeroETL-Lakehouse-Oracle-Cloud/extract-scenario-zeroetl-lakehouse-oci.png)
 
 * **Direct Data Access**: you can query data sources directly with:
   
@@ -70,7 +70,7 @@ Let's begin with minimizing data movement and latency:
 
 So far we have access to quite a complete bunch of data sources with no or minimal data latency and movement and we can query them. That's good. We've managed to minimize the *Extract* part but, what about the *Transform* one? Let's add some functionality to the architecture design:
 
-![OCI Lakehouse - Minimizing physical transformations](/data-organon/images/2023-09-30-ZEROETL-LAKEHOUSE-OCI/full-scenario-zeroetl-lakehouse-oci.png)
+![OCI Lakehouse - Minimizing physical transformations](/data-organon/images/2023-09-30-ZeroETL-Lakehouse-Oracle-Cloud/full-scenario-zeroetl-lakehouse-oci.png)
 
 Well, we know that *Transform* should be minimized and on-the-fly as much as possible to please a Zero ETL approach. In that perspective, we can leverage the capabilties highlighted in the picture above, namely:
 
