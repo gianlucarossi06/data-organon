@@ -60,7 +60,11 @@ What are the features of the **OCI Data Platform** that you could use to leverag
 
 Let's begin with minimizing data movement and latency:
 
+<!--
 ![OCI Lakehouse - Minimizing data movement and latency capabilties](/data-organon/images/2023-09-30-ZeroETL-Lakehouse-Oracle-Cloud/extract-scenario-zeroetl-lakehouse-oci.png)
+-->
+
+<img src="/data-organon/images/2023-09-30-ZeroETL-Lakehouse-Oracle-Cloud/extract-scenario-zeroetl-lakehouse-oci.png" alt="OCI Lakehouse - Minimizing data movement and latency capabilties" width="500"/>
 
 * **Direct Data Access**: you can query data sources directly with:
   
@@ -81,7 +85,5 @@ Well, we know that *Transform* should be minimized and on-the-fly as much as pos
 * **Analytics Views in Oracle Autonomous Data Warehouse**: with Autonomous Data Warehouse Studio you can visually create **Analytics Views** (alternatively, you can manually create Analytics Views with the related Oracle SQL DDL statements). They are implemented as materialized views and provide a way to simplify complex SQL queries, especially those involving **analytical and reporting functions**. They can involve multiple tables and can join them to provide a comprehensive dataset for analysis. This is particularly useful in a Zero ETL approach, when you need to **analyze** data from **different sources** or different parts of your database schema.
 * **Oracle Analytics Cloud Semantic Model**: Oracle Analytics Cloud provides a full set of capabilities to explore and perform collaborative analytics (visualizations, dashboarding, self-service analytics, augmented analytics, self-service data preparation, and others). With OAC you can also build a **semantic model**. A semantic model is a metadata model that contains physical database objects that are abstracted and modified into logical objects. In a semantic model you can create a logical structures (combining and joining different physcal data structures), create logical calculations and logical aggregations. A semantic model then acts like a translation layer between your logical/semantic objects and your underlying data structures.
 
-I haven't mentioned yet **Data Transform** and **Stream Processing**, highlighted in yellow... 
-
-
+I haven't mentioned yet **Data Transform** and **Stream Processing**, highlighted in yellow...
 
