@@ -39,8 +39,9 @@ layout: default
       <div class="list-post-desc">
         {{ post.description }}
       </div>
+      {% endif %}
       {% if post.feature_img %}
-      <div class="list-post-desc">
+      <div class="list-post-img">
         <img src="{% post.feature_img %}" />
       </div>
       {% endif %}
