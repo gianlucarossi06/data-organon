@@ -12,4 +12,6 @@ baseurl: "data-organon/"
 url: ""
 github_username:   "gianlucarossi06"
 google_analytics: "G-WP81WC62NJ"
-
+# Extensions
+exclude_generator:
+- index
