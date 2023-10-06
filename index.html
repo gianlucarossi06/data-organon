@@ -40,6 +40,10 @@ layout: default
         <img src="{% post.feature_img %}" />
         {{ post.description }}
       </div>
+      {% if post.feature_img %}
+      <div class="list-post-imsge">
+        <img src="{% post.feature_img %}" />
+      </div>
       {% endif %}
     </a>
 
