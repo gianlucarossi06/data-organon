@@ -53,7 +53,7 @@ Let's consider the following simplified logical architecture:
 ![Initial Scenario - Potential Data Sources](/data-organon/images/2023-09-30-ZeroETL-Lakehouse-Oracle-Cloud/initial-scenario-zeroetl-lakehouse-oci.png)
 -->
 
-<img src="//data-organon/images/2023-09-30-ZeroETL-Lakehouse-Oracle-Cloud/initial-scenario-zeroetl-lakehouse-oci.png" alt="Initial Scenario - Potential Data Sources" width="500"/>
+<img src="/data-organon/images/2023-09-30-ZeroETL-Lakehouse-Oracle-Cloud/initial-scenario-zeroetl-lakehouse-oci.png" alt="Initial Scenario - Potential Data Sources" width="500"/>
 
 It shows many potential data sources for an OCI Analytical Data Platform that is based on Oracle Autonomous Database as data server engine.
 What are the features of the **OCI Data Platform** that you could use to leverage those sources for your analytics needs following a **Zero ETL approach**?
