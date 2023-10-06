@@ -34,15 +34,11 @@ layout: default
       </div>
       <div class="list-post-title">
         {{ post.title }}
+        <img src="{% post.feature_img %}" />
       </div>
       {% if post.description %}
       <div class="list-post-desc">
         {{ post.description }}
-      </div>
-      {% endif %}
-      {% if post.feature_img %}
-      <div class="list-post-img">
-        <img src="{% post.feature_img %}" />
       </div>
       {% endif %}
     </a>
