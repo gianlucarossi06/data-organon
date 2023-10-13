@@ -8,6 +8,24 @@ featured_img: /data-organon/images/2023-09-30-ZeroETL-Lakehouse-Oracle-Cloud/ZER
 
 ## **Introduction**
 
+Who doesn't like fruit juices?
+We usually choose our favorite juices from a supermarket shelf. This means that the fruits were harvested somewhere in the world some time ago, transported to the company that produces the juices, then treated during the production process, cleaned, possibly peeled, put together with other fruits according to the necessary mix, squeezed to produce the final fruit juice, mixed with other substances useful for preservation and perhaps for perfecting the taste, bottled, and finally distributed to the supermarket. Quite a long and moderately complex process.
+But with what result? Well, the juices are good, immediately enjoyable, and have a quality guaranteed by the production process, which generally requires high standards in terms of cleanliness, hygiene, health, the quality of the process itself, and the quality of the basic products. Through the label, we are informed about the validity period, we know the individual ingredients, and in many cases, we can also know which fruits they were produced with and where they came from.
+
+Everything OK? Well, yes, since we quenched our thirst with satisfaction. But what if we wanted to add a fruit to our favorite mix and the manufacturer wanted to please us? Mmmm.. let's see, he should also stock up on this fruit and add it to the production process, which perhaps should also be modified to allow for the particular processing required by the new fruit or the addition of a different additive to improve the final taste.
+But let's now try to imagine a different situation. What happens if someone offers you fruit juice made from freshly picked fruit? Amazing! Fruit picked at the right moment of ripeness, squeezed, and immediately drunk with the addition of just a little sugar, if you wish, would allow you to fully savor all the nuances of flavor.
+What incomparable freshness!
+
+Everything OK? Yes, it seems like the perfect solution to achieve maximum satisfaction. But is this solution problems-free? Some come to my mind.
+Have the fruits been cleaned sufficiently? Maybe yes, but no one can guarantee it, and your stomachs might only find out later...
+It is much more difficult to have a juice made with your favorite fruit mix, especially if you like blueberry, passion fruit, pineapple, and orange. Of course, you could mitigate this problem by buying fruit at the supermarket and then making the juice yourselves. It wouldn't be the same; the fruit would still have undergone at least one transport, but a juice squeezed by yourselves could still give you more flavor (but don't forget to reserve the time and resources needed to do it at the moment).
+
+Are you wondering where I'm going? 
+Well, if you replace the fruits with data, an ETL process can be seen as the production process of fruit juices whose objective is to provide a final product with high quality standards, immediately usable by consumers, by first transporting and then combining and processing the basic products. 
+And this post aims to describe how to satisfy those who would prefer to have a juice made from freshly picked fresh fruit, reducing the time distance between collection and use as much as possible, while knowing that this exposes them to limits on the choice of the final product.
+
+## **Why ETL?**
+
 The **ET-L** (Extract Transform and Load) or **EL-T** (Extract Load and Transform) processes traditionally play a crucial role in data management solutions aimed at the creation, feeding and management of analytic data stores.
 
 Data extraction involves extracting data from homogeneous or heterogeneous sources; data transformation processes data by data cleaning and transforming it into a proper storage format/structure for the purposes of querying and analysis; data loading describes the insertion of data into the final target data store, tipically a data warehouse, a data lake or a lakehouse.
@@ -17,7 +35,7 @@ Conventionally, at a high level, an ETL process schema can be designed as follow
 ![Conventional ETL process ](/data-organon/images/2023-09-30-ZeroETL-Lakehouse-Oracle-Cloud/conventional-etl.png)
 
 But why do we need ETL processes?
-Data are becoming more and more essential for business decisions. Insights derived from valuable information can have a very significant impact on the success of an organization. With the exponential growth of data volume, data sources, and data types, the ability to validate, cleanse, integrate, standardize, curate, and aggregate data in well- orchestrated and governed pipelines has achieved a valuable priority in the data management processes of organizations.
+Insights derived from valuable information can have a very significant impact on the success of an organization. With the exponential growth of data volume, data sources, and data types, the ability to validate, cleanse, integrate, standardize, curate, and aggregate data in well-orchestrated and governed pipelines has achieved a valuable priority in the data management processes of organizations.
 
 But ETL has also some drawbacks.
 Here are some common drawbacks associated with the ETL process:
@@ -47,7 +65,7 @@ Clearly, Zero ETL approach introduces challenges as well (I will discuss them la
 
 Leveraging Oracle Cloud services for Analytical Data Platform, you can build Lakehouse solutions that combine the abilities of a data lake and a data warehouse to process a broad range of enterprise and streaming data for business analysis and machine learning (please visit [Oracle Architecture Center](https://https://docs.oracle.com/en/solutions/data-platform-lakehouse/index.html#GUID-A328ACEF-30B8-4595-B86F-F27B512744DF) for a complete description of the reference architecture).
 
-For a OCI Lakehouse solution in the context of Zero ETL, I will focus on specific capabilities and features of some of services descripted in the reference architecture.
+For a OCI Lakehouse solution in the context of Zero ETL, I will focus on specific capabilities and features of some of the services descripted in the reference architecture.
 Let's consider the following simplified logical architecture:
 
 <!--
@@ -67,7 +85,7 @@ Let's begin with minimizing data movement and latency:
 
 <img src="/data-organon/images/2023-09-30-ZeroETL-Lakehouse-Oracle-Cloud/extract-scenario-zeroetl-lakehouse-oci.png" alt="OCI Lakehouse - Minimizing data movement and latency capabilties" width="500"/>
 
-* **Direct Data Access**: you can query data sources directly with:
+* **Direct Data Access**: you could query data sources directly with:
   
   * **Oracle-Managed Heterogeneous Connectivity**: allows you to easily create database links to non-Oracle databases. When you use database links with Oracle-managed heterogeneous connectivity, Autonomous Database configures and sets up the connection to the non-Oracle database. You can then leverage all the **built-in analytical capabilities** of Oracle Autonomous Database (machine learning, graph, spatial, pattern matching, analytic views, text analytics) to analyze data of **Non-Oracle databases**.
   * **Cloud Links**: Cloud Links provide a cloud-based method to remotely access read only data on an Autonomous Database instance. With Cloud Links the data owner registers a table or view for remote access for a selected audience defined by the data owner. The data is then instantaneously accessible by everybody who got remote access granted at registration time. Whoever is supposed to see and access those data will be able to **discover** and **work with the data** made available to them.
