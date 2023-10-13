@@ -10,22 +10,22 @@ featured_img: /data-organon/images/2023-09-30-ZeroETL-Lakehouse-Oracle-Cloud/ZER
 
 Who doesn't like fruit juices?
 
-We usually choose our favorite juices from a supermarket shelf. This means that the fruits were harvested somewhere in the world some time ago, transported to the company that produces the juices, then treated during the production process, cleaned, possibly peeled, put together with other fruits according to the necessary mix, squeezed to produce the final fruit juice, mixed with other substances useful for preservation and perhaps for perfecting the taste, bottled, and finally distributed to the supermarket. Quite a long and moderately complex process.
+We usually choose our favorite juices from a supermarket shelf. It's not magic. That means that the fruits were harvested somewhere in the world some time ago, transported to the company that produces the juices, then treated during the production process, cleaned, possibly peeled, put together with other fruits according to the necessary mix, squeezed to produce the final fruit juice, mixed with other substances useful for preservation and perhaps for perfecting the taste, bottled, and finally distributed to the supermarket. Quite a long and moderately complex process.
 
 But with what result? Well, the juices are good, immediately enjoyable, and have a quality guaranteed by the production process, which generally requires high standards in terms of cleanliness, hygiene, health, the quality of the process itself, and the quality of the basic products. Through the label, we are informed about the validity period, we know the individual ingredients, and in many cases, we can also know which fruits they were produced with and where they came from.
 
-Everything OK? Well, yes, since we quenched our thirst with satisfaction. But what if we wanted to add a fruit to our favorite mix and the manufacturer wanted to please us? Mmmm.. let's see, he should also stock up on this fruit and add it to the production process, which perhaps should also be modified to allow for the particular processing required by the new fruit or the addition of a different additive to improve the final taste. 
+Everything OK? Well, yes, since we quenched our thirst with satisfaction. But what if we wanted to add a fruit to our favorite mix and the manufacturer wanted to please us? Mmmm.. let's see, he should also stock up on this fruit and add it to the production process, which perhaps should also be modified to allow for the particular processing required by the new fruit or the addition of a different additive to improve the final taste.
 Of course, even if the manufacturer decides it's worth it, we would have to wait quite some time before we could taste the new juice. And what if we don't like it because it's different from what we expected?
 
 But let's now try to imagine a different situation.
 
-What happens if someone offers us fruit juice made from freshly picked fruit? Wonderful! Fruit picked at the right moment of ripeness, squeezed, and immediately drunk with the addition of just a little sugar, if we wish, would allow us to fully savor all the nuances of flavor. What incomparable freshness!
+What happens if someone offers us fruit juice made from freshly picked fruit? Wonderful! Fruit picked at the right moment of ripeness, squeezed, and immediately drunk with the addition of just a little sugar, if we wish, would allow us to fully taste all the nuances of flavor. What incomparable freshness!
 
 Amazing! It seems like the perfect solution to achieve maximum satisfaction. But is this solution problems-free? Some come to my mind.
 
 Have the fruits been cleaned sufficiently? Maybe yes, but no one can guarantee it, and our stomachs might only find out later...
 
-It is much more difficult to have a juice made with your favorite fruit mix, especially if you like blueberry, passion fruit, pineapple, and orange. Of course, we could mitigate this problem by buying fruit at the supermarket and then making the juice ourselves. It wouldn't be the same; the fruit would still have undergone at least one transport, but a juice squeezed by ourselves could still give us more flavor (but don't forget to reserve the time and resources needed to do it at the moment).
+It is much more difficult to have a fresh juice made with your favorite fruit mix, especially if you like blueberry, passion fruit, pineapple, and orange. Of course, we could mitigate this problem by buying fruit at the supermarket and then making the juice ourselves. It wouldn't be the same; the fruit would still have undergone at least one transport, but a juice squeezed by ourselves could still give us more flavor (but don't forget to reserve the time and resources needed to do it at the moment).
 
 Are you wondering where I'm going?
 
@@ -44,9 +44,9 @@ Conventionally, at a high level, an ETL process schema can be designed as follow
 ![Conventional ETL process ](/data-organon/images/2023-09-30-ZeroETL-Lakehouse-Oracle-Cloud/conventional-etl.png)
 
 But why do we need ETL processes?
-Insights derived from valuable information can have a very significant impact on the success of an organization. With the exponential growth of data volume, data sources, and data types, the ability to validate, cleanse, integrate, standardize, curate, and aggregate data in well-orchestrated and governed pipelines has achieved a valuable priority in the data management processes of organizations.
+Insights derived from valuable information can have a very significant impact on the success of an organization. With the exponential growth of data volume, data sources, and data types, the ability to validate, cleanse, integrate, standardize, curate, and aggregate data in well-orchestrated and governed pipelines has achieved a great value in the data management processes of organizations.
 
-But ETL over time it has also faced us with several challenges. Here are some common drawbacks associated with the ETL process:
+But ETL over time has also faced us with several challenges. Here are some common drawbacks associated with the ETL process:
 
 - **Complexity**: ETL processes can be complex, involving multiple steps and transformations. Designing and implementing these processes can be time-consuming, especially for large and complex data sets.
 - **Data Latency**: ETL processes are usually scheduled to run at specific intervals (e.g., nightly batches). This means that the data in the target data store might sometimes have a latency not suited for the business needs.
@@ -73,8 +73,8 @@ Clearly, Zero ETL approach introduces challenges as well (I will discuss them la
 
 Leveraging Oracle Cloud services for Analytical Data Platform, you can build Lakehouse solutions that combine the abilities of a data lake and a data warehouse to process a broad range of enterprise and streaming data for business analysis and machine learning (please visit [Oracle Architecture Center](https://https://docs.oracle.com/en/solutions/data-platform-lakehouse/index.html#GUID-A328ACEF-30B8-4595-B86F-F27B512744DF) for a complete description of the reference architecture).
 
-For a OCI Lakehouse solution in the context of Zero ETL, I will focus on specific capabilities and features of some of the services descripted in the reference architecture.
-Let's consider the following simplified logical architecture:
+For a OCI Lakehouse solution in the context of Zero ETL, I will focus on specific capabilities and features provided by some of the services descripted in the reference architecture.
+Let's consider the following logical architecture:
 
 <!--
 ![Initial Scenario - Potential Data Sources](/data-organon/images/2023-09-30-ZeroETL-Lakehouse-Oracle-Cloud/initial-scenario-zeroetl-lakehouse-oci.png)
@@ -112,5 +112,8 @@ Well, we know that *Transform* should be minimized and on-the-fly as much as pos
 * **Analytics Views in Oracle Autonomous Data Warehouse**: with Autonomous Data Warehouse Studio you can visually create **Analytics Views** (alternatively, you can manually create Analytics Views with the related Oracle SQL DDL statements). They are implemented as materialized views and provide a way to simplify complex SQL queries, especially those involving **analytical and reporting functions**. They can involve multiple tables and can join them to provide a comprehensive dataset for analysis. This is particularly useful in a Zero ETL approach, when you need to **analyze** data from **different sources** or different parts of your database schema.
 * **Oracle Analytics Cloud Semantic Model**: Oracle Analytics Cloud provides a full set of capabilities to explore and perform collaborative analytics (visualizations, dashboarding, self-service analytics, augmented analytics, self-service data preparation, and others). With OAC you can also build a **semantic model**. A semantic model is a metadata model that contains physical database objects that are abstracted and modified into logical objects. In a semantic model you can create a logical structures (combining and joining different physcal data structures), create logical calculations and logical aggregations. A semantic model then acts like a translation layer between your logical/semantic objects and your underlying data structures.
 
-I haven't mentioned yet **Data Transform** and **Stream Processing**, highlighted in yellow...
+I haven't described yet **Data Transform** and **Stream Processing**, highlighted differently, in yellow, in the picture above. This is because they do transform and process data.
+
+In many cases, we are dealing with many heterogeneous data sources, with different update speeds, with different identifiers that identify the same data, with duplicated data, with the quality of the basic data not controlled at the source, which also need to be integrated with information that come from different systems. This requires a certain degree of data transformation. That's fine. Zero ETL is just an approach that shows a direction: minimizing data extraction and transformation. While tending to the total reduction, it suggests keeping the ETL processes as small, agile, and simple as possible. If we think of the three layers of data transformation, *raw, foundation, performance* (also referenced in the *medallion* architecture as *bronze, silver, gold*), from that perspective, we should avoid the middle and final stages. While avoiding the final step could be an achievable goal in a good number of cases, not carrying out the typical transformations that lead to the *foundation/silver* layer could be more difficult or ultimately not convenient.
+
 
