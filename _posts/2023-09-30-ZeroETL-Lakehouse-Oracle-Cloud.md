@@ -29,8 +29,9 @@ It is much more difficult to have a juice made with your favorite fruit mix, esp
 
 Are you wondering where I'm going?
 
-Well, if you replace the fruits with data, an ETL process can be seen as the production process of fruit juices whose objective is to provide a final product with high quality standards, immediately usable by consumers, by first transporting and then combining and processing the basic products. 
-And this post aims to describe how to satisfy those who would prefer to have a juice made from freshly picked fresh fruit, reducing the time distance between collection and use as much as possible, while knowing that this exposes them to limits on the choice of the final product.
+Well, if you replace the fruits with data, an ETL process can be seen as the production process of fruit juices whose objective is to provide a final product with high quality standards, immediately usable by consumers, by first transporting and then combining and processing the basic products.
+
+This post aims to describe how to satisfy those who would prefer to have a juice made from freshly picked fresh fruit, reducing the time distance between collection and use as much as possible, while knowing that this exposes them to limits on the choice of the final product.
 
 ## **Why ETL?**
 
@@ -45,8 +46,7 @@ Conventionally, at a high level, an ETL process schema can be designed as follow
 But why do we need ETL processes?
 Insights derived from valuable information can have a very significant impact on the success of an organization. With the exponential growth of data volume, data sources, and data types, the ability to validate, cleanse, integrate, standardize, curate, and aggregate data in well-orchestrated and governed pipelines has achieved a valuable priority in the data management processes of organizations.
 
-But ETL has also some drawbacks.
-Here are some common drawbacks associated with the ETL process:
+But ETL over time it has also faced us with several challenges. Here are some common drawbacks associated with the ETL process:
 
 - **Complexity**: ETL processes can be complex, involving multiple steps and transformations. Designing and implementing these processes can be time-consuming, especially for large and complex data sets.
 - **Data Latency**: ETL processes are usually scheduled to run at specific intervals (e.g., nightly batches). This means that the data in the target data store might sometimes have a latency not suited for the business needs.
