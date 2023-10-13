@@ -11,20 +11,24 @@ featured_img: /data-organon/images/2023-09-30-ZeroETL-Lakehouse-Oracle-Cloud/ZER
 Who doesn't like fruit juices?
 
 We usually choose our favorite juices from a supermarket shelf. This means that the fruits were harvested somewhere in the world some time ago, transported to the company that produces the juices, then treated during the production process, cleaned, possibly peeled, put together with other fruits according to the necessary mix, squeezed to produce the final fruit juice, mixed with other substances useful for preservation and perhaps for perfecting the taste, bottled, and finally distributed to the supermarket. Quite a long and moderately complex process.
+
 But with what result? Well, the juices are good, immediately enjoyable, and have a quality guaranteed by the production process, which generally requires high standards in terms of cleanliness, hygiene, health, the quality of the process itself, and the quality of the basic products. Through the label, we are informed about the validity period, we know the individual ingredients, and in many cases, we can also know which fruits they were produced with and where they came from.
 
 Everything OK? Well, yes, since we quenched our thirst with satisfaction. But what if we wanted to add a fruit to our favorite mix and the manufacturer wanted to please us? Mmmm.. let's see, he should also stock up on this fruit and add it to the production process, which perhaps should also be modified to allow for the particular processing required by the new fruit or the addition of a different additive to improve the final taste. 
-Of course, even if the manufacturer decides it's worth it, we would have to wait quite some time before we could taste the new juice. Furthermore, what if we don't like it because it's different from what we expected?
+Of course, even if the manufacturer decides it's worth it, we would have to wait quite some time before we could taste the new juice. And what if we don't like it because it's different from what we expected?
 
 But let's now try to imagine a different situation.
-What happens if someone offers you fruit juice made from freshly picked fruit? Amazing! Fruit picked at the right moment of ripeness, squeezed, and immediately drunk with the addition of just a little sugar, if you wish, would allow you to fully savor all the nuances of flavor.
-What incomparable freshness!
 
-Everything OK? Yes, it seems like the perfect solution to achieve maximum satisfaction. But is this solution problems-free? Some come to my mind.
-Have the fruits been cleaned sufficiently? Maybe yes, but no one can guarantee it, and your stomachs might only find out later...
-It is much more difficult to have a juice made with your favorite fruit mix, especially if you like blueberry, passion fruit, pineapple, and orange. Of course, you could mitigate this problem by buying fruit at the supermarket and then making the juice yourselves. It wouldn't be the same; the fruit would still have undergone at least one transport, but a juice squeezed by yourselves could still give you more flavor (but don't forget to reserve the time and resources needed to do it at the moment).
+What happens if someone offers us fruit juice made from freshly picked fruit? Wonderful! Fruit picked at the right moment of ripeness, squeezed, and immediately drunk with the addition of just a little sugar, if we wish, would allow us to fully savor all the nuances of flavor. What incomparable freshness!
 
-Are you wondering where I'm going? 
+Amazing! It seems like the perfect solution to achieve maximum satisfaction. But is this solution problems-free? Some come to my mind.
+
+Have the fruits been cleaned sufficiently? Maybe yes, but no one can guarantee it, and our stomachs might only find out later...
+
+It is much more difficult to have a juice made with your favorite fruit mix, especially if you like blueberry, passion fruit, pineapple, and orange. Of course, we could mitigate this problem by buying fruit at the supermarket and then making the juice ourselves. It wouldn't be the same; the fruit would still have undergone at least one transport, but a juice squeezed by ourselves could still give us more flavor (but don't forget to reserve the time and resources needed to do it at the moment).
+
+Are you wondering where I'm going?
+
 Well, if you replace the fruits with data, an ETL process can be seen as the production process of fruit juices whose objective is to provide a final product with high quality standards, immediately usable by consumers, by first transporting and then combining and processing the basic products. 
 And this post aims to describe how to satisfy those who would prefer to have a juice made from freshly picked fresh fruit, reducing the time distance between collection and use as much as possible, while knowing that this exposes them to limits on the choice of the final product.
 
