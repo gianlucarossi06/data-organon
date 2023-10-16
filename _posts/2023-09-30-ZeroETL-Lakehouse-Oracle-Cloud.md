@@ -12,26 +12,26 @@ Who doesn't like fruit juices?
 
 We usually choose our favorite juices from a supermarket shelf. It's not magic. That means that the fruits were harvested somewhere in the world some time ago, transported to the manufacturer that produces the juices, then treated during the production process, cleaned, possibly peeled, put together with other fruits according to the necessary mix, squeezed to produce the final fruit juice, mixed with other substances useful for preservation and perhaps for perfecting the taste, bottled, and finally distributed to the supermarket. Quite a long and complex process.
 
-But with what result? Well, the juices are usually good, immediately enjoyable, and have a quality guaranteed by the production process, which generally requires high standards in terms of cleanliness, hygiene, health, the quality of the process itself, and the quality of the basic products. Through the label, we are informed about the validity period, we know the individual ingredients, and in many cases, we can also know which fruits they were produced with and where they came from.
+The results? Well, the juices are usually good, immediately enjoyable, and have a quality guaranteed by the production process, which generally requires high standards in terms of cleanliness, hygiene, health, the quality of the process itself, and the quality of the basic products. Through the label, we are informed about the validity period, we know the individual ingredients, and in many cases, we can also know which fruits they were produced with and where they came from.
 
-Everything OK? Well, yes, since we quenched our thirst with satisfaction. But what if we start preferring a juice with a different mix of fruits and the manufacturer wants to please us? Mmmm.. let's see. He should also stock up on new fruits and add them to the production process, which perhaps should also be modified to allow for the particular processing required by the new fruits or the addition of a different additive to improve the final taste.
-Of course, even if the manufacturer decides it's worth it, we would have to wait quite some time before we could taste the new juice. And what if we don't like it because it's different from what we expected?
+Everything OK? Well, yes, since we quenched our thirst with satisfaction. But what if we start preferring a juice with a different mix of fruits and the manufacturer wants to please us? Mmmm, let's see. He should also stock up on new fruits and add them to the production process, which perhaps should also be modified to allow for the particular processing required by the new fruits or the addition of a different additive to improve the final taste.
+Even if the manufacturer decides it's worth it, we would have to wait quite some time before we could taste the new juice. And what if, when we finally taste it, we don't like it because it's different from what we expected?
 
-But let's now try to imagine a different situation.
+Let's now try to imagine a different situation.
 
-What happens if someone offers us fruit juice made from freshly picked fruit? Wonderful! Fruit picked at the right moment of ripeness, squeezed, and immediately drunk with the addition of just a little sugar, if we wish, would allow us to fully taste all the nuances of flavor. What incomparable freshness!
+What happens if someone offers us fruit juice made from freshly picked fruit? Fruit picked at the right moment of ripeness, squeezed, and immediately drunk with the addition of just a little sugar, if we wish, would allow us to fully taste all the nuances of flavor. What incomparable freshness! Amazing!
 
-Amazing! It seems like the perfect solution to achieve maximum satisfaction. But is this solution problems-free? Some come to my mind.
+It seems like the perfect drink to achieve maximum satisfaction. But is this solution problems-free? Some come to my mind.
 
 Have the fruits been cleaned sufficiently? Maybe yes, but no one can guarantee it, and our stomachs might only find out later...
 
-It is much more difficult to have a fresh juice made with your favorite fruit mix, especially if you like blueberry, passion fruit, pineapple, and orange. Of course, we could mitigate this problem by buying fruit at the supermarket and then making the juice ourselves. It wouldn't be the same; the fruit would still have undergone at least one transport, but a juice squeezed by ourselves could still give us more flavor (but don't forget to reserve the time and resources needed to do it at the moment).
+It is much more difficult to have a fresh juice made with your favorite fruit mix, especially if you like blueberry, passion fruit, pineapple, and orange. Of course, we could mitigate this problem by buying fruit at the supermarket and then making the juice ourselves. It wouldn't be the same; the fruit would still have undergone at least one transport, but a juice squeezed by ourselves could still give us more flavor (but don't forget to reserve the time needed to do it at the moment).
 
 Are you wondering where I'm going?
 
 Well, if you replace the fruits with data, an ETL process can be seen as the production process of fruit juices whose objective is to provide a final product with high quality standards, immediately usable by consumers, by first transporting and then combining and processing the basic products.
 
-This post aims to describe how to satisfy those who would prefer to have a juice made from freshly picked fresh fruit, reducing the time distance between collection and use as much as possible, while knowing that this exposes them to limits on the choice of the final product.
+And this post aims to describe how to satisfy those who would prefer to have a juice made from freshly picked fresh fruit, reducing the time distance between collection and use as much as possible, while knowing that this exposes them to potenital limits on the final product.
 
 ## **Why ETL?**
 
@@ -43,7 +43,7 @@ Conventionally, at a high level, an ETL process schema can be designed as follow
 
 ![Conventional ETL process ](/data-organon/images/2023-09-30-ZeroETL-Lakehouse-Oracle-Cloud/conventional-etl.png)
 
-But why do we need ETL processes?
+Why do we need ETL processes?
 Insights derived from valuable information can have a very significant impact on the success of an organization. With the exponential growth of data volume, data sources, and data types, the ability to validate, cleanse, integrate, standardize, curate, and aggregate data in well-orchestrated and governed pipelines has achieved a great value in the data management processes of organizations.
 
 But ETL over time has also faced us with several challenges. Here are some common drawbacks associated with the ETL process:
@@ -114,7 +114,20 @@ Well, we know that *Transform* should be minimized and on-the-fly as much as pos
 
 I haven't described yet **Data Transform** and **Stream Processing**, highlighted differently, in yellow, in the picture above. This is because they do transform and process data.
 
-In many cases, we are dealing with many heterogeneous data sources, with different update speeds, with different identifiers that identify the same data, with duplicated data, with the quality of the basic data not controlled at the source, which also need to be integrated with information that come from different systems. This requires a certain degree of data transformation. That's fine. Zero ETL is just an approach that shows a direction: minimizing data extraction and transformation. While tending to the total reduction, it suggests keeping the ETL processes as small, agile, and simple as possible. If we think of the three layers of data transformation, *raw, foundation, performance* (also referenced in the *medallion* architecture as *bronze, silver, gold*), from that perspective, we should avoid the middle and final stages. To be practical, while avoiding the final step could be an achievable goal in a good number of cases, not carrying out the typical transformations that lead to the *foundation/silver* layer could be more difficult or ultimately not convenient.
+In many cases, we are dealing with a lot of heterogeneous data sources, with different update speeds, with different identifiers that identify the same data, with duplicated data, with the quality of the basic data not controlled at the source, which also need to be integrated with information that come from different systems. This requires a certain degree of data transformation. That's fine. Zero ETL is just an approach that shows a direction: minimizing data extraction and transformation. While tending to the total reduction, it suggests keeping the ETL processes as small, agile, and simple as possible.
 
-This is where **Autonomous Data Warehouse Data Transforms** for batch processing and **GoldenGate Stream Analytics** for stream processing come in. Why those, since in the Oracle Data Platform you can find many services with stream or batch processing capability? ADW Data Transforms is complete and powerful E-LT tool embedded in the ADW system; then it's particularly suitable for our case because it does not require any data movement. And so is GoldenGate Stream Analytics, which offers a lot of functionality to make transformation, filtering, and monitoring of streaming data very easy.
+From that perspective, if we think of the three layers of data transformation, *raw, foundation, performance* (also referenced in the *medallion* architecture as *bronze, silver, gold*), we should avoid the middle and final stages. To be practical, while avoiding the final step could be an achievable goal in a good number of cases, not carrying out the typical transformations that lead to the *foundation/silver* layer could be more difficult or ultimately not convenient.
+
+This is where **Autonomous Data Warehouse Data Transforms** for batch processing and **GoldenGate Stream Analytics** for stream processing come in:
+
+* **ADW Data Transforms** is complete and powerful E-LT tool embedded in the ADW system; then it's particularly suitable for our case because it does not require any data movement.
+* **GoldenGate Stream Analytics** offers a lot of functionality to make transformation, filtering, and monitoring of streaming data very easy. It can process and analyzes large-scale, real-time information by using sophisticated correlation patterns, enrichment, and machine learning. Users can explore real-time data through live charts, maps, visualizations, and graphically build streaming pipelines without any hand coding.
+
+So far, we have seen the various ways in which we can directly access data and thus minimize its transport, and which tools we can exploit to carry out on-the-fly transformations, query federation, and data virtualization. And finally, a couple of options for carrying out the necessary transformations on the data, always keeping in mind the simplicity and agility of the process.
+
+Let's continue with an example.
+
+
+
+
 
