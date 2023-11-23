@@ -159,7 +159,7 @@ Therefore, with the assumption that it is always better to make these types of d
   * Autonomous Data Sharing:
     * [Oracle Documentation](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/autonomous-data-share.html)
     * Delta Sharing with Oracle Cloud: [Jeff Richmond's Blog on Linkedin](https://www.linkedin.com/pulse/delta-sharing-oracle-cloud-jeff-richmond%3FtrackingId=WtO1CNNcTqStZ3CwbM%252Bz7A%253D%253D/?trackingId=WtO1CNNcTqStZ3CwbM%2Bz7A%3D%3D)
-* **Oracle Materilialized Views**: [Refreshing Materialized Views](https://docs.oracle.com/en/database/oracle/oracle-database/23/dwhsg/refreshing-materialized-views.html#GUID-64068234-BDB0-4C12-AE70-75571046A586) 
+* **Oracle Materialized Views**: [Refreshing Materialized Views](https://docs.oracle.com/en/database/oracle/oracle-database/23/dwhsg/refreshing-materialized-views.html#GUID-64068234-BDB0-4C12-AE70-75571046A586) 
 * **Oracle Data Transform**:
   * Introducing Data Transforms: Built in Data Integration for Autonomous Database: [Oracle Blog](https://blogs.oracle.com/datawarehousing/post/introducing-data-transforms-built-in-data-integration-for-autonomous-database)
   * Data Transform: [Oracle Documentation](https:////docs.oracle.com/en/database/data-integration/data-transforms/using/introduction-oracle-data-transforms.html#GUID-F16BE156-BA52-4DDD-9CCF-5EB486882D7A)
