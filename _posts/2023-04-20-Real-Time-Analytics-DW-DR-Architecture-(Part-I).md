@@ -2,6 +2,15 @@
 title: Real Time Analytics DW DR Architecture (Part I) - DR Architecture Configuration
 description: Disaster Recovery Architecture Configuration.
 ---
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WP81WC62NJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WP81WC62NJ');
+</script>
 
 ![](/data-organon/images/2023-04-20-OCI-GG-DR-Part-I/DISASTER-RECOVERY-1.jpg)
 
