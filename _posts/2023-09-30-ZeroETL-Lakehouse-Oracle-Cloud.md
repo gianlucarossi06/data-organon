@@ -80,7 +80,7 @@ Let's consider the following logical architecture:
 ![Initial Scenario - Potential Data Sources](/data-organon/images/2023-09-30-ZeroETL-Lakehouse-Oracle-Cloud/initial-scenario-zeroetl-lakehouse-oci.png)
 -->
 
-<img src="/data-organon/images/2023-09-30-ZeroETL-Lakehouse-Oracle-Cloud/initial-scenario-zeroetl-lakehouse-oci.png" alt="Initial Scenario - Potential Data Sources" width="500"/>
+<img src="/data-organon/images/2023-09-30-ZeroETL-Lakehouse-Oracle-Cloud/initial-scenario-zeroetl-lakehouse-oci.png" alt="Initial Scenario - Potential Data Sources" width="600"/>
 
 It shows many potential data sources for an OCI Analytical Data Platform that is based on Oracle Autonomous Database as a data server engine.
 What are the features of the **OCI Data Platform** that you could use to leverage those sources for your analytics needs following a **Zero ETL approach**?
@@ -93,7 +93,7 @@ Let's begin with minimizing data movement and latency:
 
 <img src="/data-organon/images/2023-09-30-ZeroETL-Lakehouse-Oracle-Cloud/extract-scenario-zeroetl-lakehouse-oci.png" alt="OCI Lakehouse - Minimizing data movement and latency capabilties" width="600"/>
 
-* **Direct Data Access**: you could query data sources directly with:
+* **Direct Data Access**: you can query data sources directly with:
   
   * **Oracle-Managed Heterogeneous Connectivity**: allows you to easily create database links to non-Oracle databases. When you use database links with Oracle-managed heterogeneous connectivity, Autonomous Database configures and sets up the connection to the non-Oracle database. You can then leverage all the **built-in analytical capabilities** of Oracle Autonomous Database (machine learning, graph, spatial, pattern matching, analytic views, text analytics) to analyze data from **Non-Oracle databases**.
   * **Customer-Managed Heterogeneous Connectivity**: This type of connectivity allows for the creation of database links by leveraging the Oracle Database Gateway. You can use Customer-Managed Connectivity as an alternative to link data sources that are currently not supported by Oracle-Managed Connectivity or that don't provide compatible end-points (the Oracle-Managed Connectivity, in most cases, supports only private end-points).
@@ -144,20 +144,17 @@ Therefore, with the assumption that it is always better to make these types of d
 
 * **OCI Analytical Data Platform**: [Oracle Architecture Center](https://https://docs.oracle.com/en/solutions/data-platform-lakehouse/index.html#GUID-A328ACEF-30B8-4595-B86F-F27B512744DF)
 * **Oracle Autonomous Data Warehouse**:
-  
   * Create Database Links to Non-Oracle Databases with Oracle-Managed Heterogeneous Connectivity: [Oracle Documentation](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/database-links-other-databases-oracle-managed.html#GUID-9FBC138F-7B22-4D14-96CF-349ADE2959F5)
   * Create Database Links to Non-Oracle Databases with Customer-Managed Heterogeneous Connectivity: [Oracle Documentation](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/database-links-other-databases-customer-managed.html#GUID-DE1B1E26-0AB8-44CF-8A9E-D42E7628ADF2)
   * Autonomous Data Sharing:
     * [Oracle Documentation](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/autonomous-data-share.html)
     * Delta Sharing with Oracle Cloud: [Jeff Richmond's Blog on Linkedin](https://www.linkedin.com/pulse/delta-sharing-oracle-cloud-jeff-richmond%3FtrackingId=WtO1CNNcTqStZ3CwbM%252Bz7A%253D%253D/?trackingId=WtO1CNNcTqStZ3CwbM%2Bz7A%3D%3D)
 * **Data Transform**:
-  
   * Introducing Data Transforms: Built in Data Integration for Autonomous Database: [Oracle Blog](https://blogs.oracle.com/datawarehousing/post/introducing-data-transforms-built-in-data-integration-for-autonomous-database)
   * Data Transform: [Oracle Documentation](https:////docs.oracle.com/en/database/data-integration/data-transforms/using/introduction-oracle-data-transforms.html#GUID-F16BE156-BA52-4DDD-9CCF-5EB486882D7A)
 * **OCI GoldenGate Stream Analytics**: [Oracle Documentation](https://docs.oracle.com/en-us/iaas/goldengate/doc/stream-and-analyze.html)
 * **OCI GoldenGate**: [Oracle Documentation](https://docs.oracle.com/en/cloud/paas/goldengate-service/docs.html)
 * **Oracle Analytics Cloud**:
-  
   * Building Semantic Models in Oracle Analytics Cloud:  [Oracle Documentation](https://docs.oracle.com/en/cloud/paas/analytics-cloud/acmdg/index.html#Oracle%C2%AE-Cloud)
 
 <!--
