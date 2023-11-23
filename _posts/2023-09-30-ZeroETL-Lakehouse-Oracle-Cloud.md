@@ -74,7 +74,7 @@ The following sections describe the services and features of the OCI data platfo
 Leveraging Oracle Cloud services for Analytical Data Platform, you can build Lakehouse solutions that combine the abilities of a data lake and a data warehouse to process a broad range of enterprise and streaming data for business analysis and machine learning (please visit [Oracle Architecture Center](https://https://docs.oracle.com/en/solutions/data-platform-lakehouse/index.html#GUID-A328ACEF-30B8-4595-B86F-F27B512744DF) for a complete description of the reference architecture).
 
 In the context of Zero ETL, I will focus on specific capabilities and features provided by some of the services described in the reference architecture.
-Let's consider the following logical architecture:
+Let's consider the following initial state:
 
 <!--
 ![Initial Scenario - Potential Data Sources](/data-organon/images/2023-09-30-ZeroETL-Lakehouse-Oracle-Cloud/initial-scenario-zeroetl-lakehouse-oci.png)
@@ -110,7 +110,7 @@ So far, we have access to quite a complete bunch of data sources with no or mini
 
 Well, we know that *Transform* should be minimized and on-the-fly as much as possible to please a Zero ETL approach. In that perspective, we can leverage the capabilities highlighted in the picture above, namely:
 
-* **Views and Materialized Views in Oracle Autonomous Data Warehouse**: **Views** are particularly useful in a Zero ETL approach when you need to **analyze** data from **different sources** or different parts of your database schema, eventually performing the data integration and data transformation tasks often required to ease access for data consumers. You can choose to create **Materialized Views** to improve query performance, especially when you need to precalculate expensive joins and aggregation operations. Clearly, Materialized Views introduce the need for a refresh, but with Oracle Database, you have multiple options to do it automatically and efficiently.
+* **Views and Materialized Views in Oracle Autonomous Data Warehouse**: **Views** are particularly useful in a Zero ETL approach when you need to **analyze** data from **different sources** or different parts of your database schema, eventually performing the data integration and data transformation tasks that are often required to ease access for data consumers. You can also choose to create **Materialized Views** to improve query performance, especially when you need to precalculate expensive joins and aggregation operations. Clearly, Materialized Views introduce the need for a refresh, but with Oracle Database, you have multiple options to do it automatically and efficiently.
 * **Analytics Views in Oracle Autonomous Data Warehouse**: with Autonomous Data Warehouse Studio, you can visually create **Analytics Views** (alternatively, you can manually create Analytics Views with the related Oracle SQL DDL statements). They are implemented as materialized views and provide a way to simplify complex SQL queries, especially those involving **analytical and reporting functions**, since they allow to define **measures, dimensions, and hierarchies** that represent the most intuitive, consolidated, and well-known modeling approach to analyze data from a business perspective. They can involve multiple tables and join them to provide a comprehensive dataset for analysis.
 * **Oracle Analytics Cloud Semantic Model**: Oracle Analytics Cloud provides a full set of capabilities to explore and perform collaborative analytics (visualizations, dashboarding, self-service analytics, augmented analytics, self-service data preparation, and others). With OAC you can also build a **semantic model**. A semantic model is a metadata model that contains physical database objects that are abstracted and modified into logical objects. In a semantic model, you can create logical structures (combining and joining different physcal data structures), logical calculations, and logical aggregations. A semantic model then acts like a translation layer between your logical/semantic objects and your underlying data structures.
 
@@ -149,7 +149,8 @@ Therefore, with the assumption that it is always better to make these types of d
   * Autonomous Data Sharing:
     * [Oracle Documentation](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/autonomous-data-share.html)
     * Delta Sharing with Oracle Cloud: [Jeff Richmond's Blog on Linkedin](https://www.linkedin.com/pulse/delta-sharing-oracle-cloud-jeff-richmond%3FtrackingId=WtO1CNNcTqStZ3CwbM%252Bz7A%253D%253D/?trackingId=WtO1CNNcTqStZ3CwbM%2Bz7A%3D%3D)
-* **Data Transform**:
+* **Oracle Materilialized Views**: [Refreshing Materialized Views](https://docs.oracle.com/en/database/oracle/oracle-database/23/dwhsg/refreshing-materialized-views.html#GUID-64068234-BDB0-4C12-AE70-75571046A586) 
+* **Oracle Data Transform**:
   * Introducing Data Transforms: Built in Data Integration for Autonomous Database: [Oracle Blog](https://blogs.oracle.com/datawarehousing/post/introducing-data-transforms-built-in-data-integration-for-autonomous-database)
   * Data Transform: [Oracle Documentation](https:////docs.oracle.com/en/database/data-integration/data-transforms/using/introduction-oracle-data-transforms.html#GUID-F16BE156-BA52-4DDD-9CCF-5EB486882D7A)
 * **OCI GoldenGate Stream Analytics**: [Oracle Documentation](https://docs.oracle.com/en-us/iaas/goldengate/doc/stream-and-analyze.html)
