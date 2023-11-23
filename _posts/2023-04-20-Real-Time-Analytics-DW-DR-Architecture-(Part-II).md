@@ -3,6 +3,16 @@ title: Real Time Analytics DW DR Architecture (Part II) - DR Recovery Operations
 description: DR Recovery Operations.
 ---
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WP81WC62NJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WP81WC62NJ');
+</script>
+
 ![](/data-organon/images/2023-04-20-OCI-GG-DR-Part-II/DISASTER-RECOVERY-2.jpg)
 
 ## **Introduction**
