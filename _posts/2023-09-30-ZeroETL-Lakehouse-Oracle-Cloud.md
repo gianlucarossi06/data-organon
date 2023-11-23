@@ -91,7 +91,7 @@ Let's begin with minimizing data movement and latency:
 ![OCI Lakehouse - Minimizing data movement and latency capabilties](/data-organon/images/2023-09-30-ZeroETL-Lakehouse-Oracle-Cloud/extract-scenario-zeroetl-lakehouse-oci.png)
 -->
 
-<img src="/data-organon/images/2023-09-30-ZeroETL-Lakehouse-Oracle-Cloud/extract-scenario-zeroetl-lakehouse-oci.png" alt="OCI Lakehouse - Minimizing data movement and latency capabilties" width="500"/>
+<img src="/data-organon/images/2023-09-30-ZeroETL-Lakehouse-Oracle-Cloud/extract-scenario-zeroetl-lakehouse-oci.png" alt="OCI Lakehouse - Minimizing data movement and latency capabilties" width="600"/>
 
 * **Direct Data Access**: you could query data sources directly with:
   
@@ -159,7 +159,6 @@ Therefore, with the assumption that it is always better to make these types of d
 * **Oracle Analytics Cloud**:
   
   * Building Semantic Models in Oracle Analytics Cloud:  [Oracle Documentation](https://docs.oracle.com/en/cloud/paas/analytics-cloud/acmdg/index.html#Oracle%C2%AE-Cloud)
-
 
 <!--
 
