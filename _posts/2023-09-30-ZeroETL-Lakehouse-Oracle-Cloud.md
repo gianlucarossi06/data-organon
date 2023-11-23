@@ -4,6 +4,16 @@ description: Lakehouse solution in OCI with minimized or no ETL.
 featured_img: /data-organon/images/2023-09-30-ZeroETL-Lakehouse-Oracle-Cloud/ZERO-ETL.jpg
 ---
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WP81WC62NJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WP81WC62NJ');
+</script>
+
 ![](/data-organon/images/2023-09-30-ZeroETL-Lakehouse-Oracle-Cloud/ZERO-ETL.jpg)
 
 ## **Introduction**
