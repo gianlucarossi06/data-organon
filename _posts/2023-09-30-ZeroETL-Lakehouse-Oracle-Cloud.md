@@ -35,7 +35,7 @@ It seems like the perfect drink to achieve maximum satisfaction. But is this dif
 
 Have the fruits been cleaned sufficiently? Maybe yes, but no one can guarantee it, and our stomachs might only find out later...
 
-Furthermore, it is much more difficult to have a fresh juice made with your favorite fruit mix, especially if you like blueberry, passion fruit, pineapple, and orange. Of course, we could mitigate this problem by buying fruit at the supermarket and then making the juice ourselves. It wouldn't be the same; the fruit would still have undergone at least one transport, but a juice squeezed by ourselves could still give us more flavor (but don't forget to reserve the time needed to do it at the moment).
+Furthermore, it is much more difficult to have a fresh juice made with your favorite fruit mix, especially if you like blueberry, passion fruit, pineapple, and orange. Of course, we could mitigate this problem by buying fruit at the supermarket and then making the juice ourselves. It wouldn't be the same; the fruit would still have undergone at least one transport, but a juice squeezed by ourselves could still give us more flavor (but don't forget to reserve the time needed to do it at the moment!).
 
 Are you wondering where I'm going?
 
@@ -144,6 +144,7 @@ Clearly, this type of approach, while indicating the possible tools and methods 
 Let me mention here two of the most immediate ones:
 
 * **Limited data integration and transformation capabilities**: no, small, or on-the-fly integrations and transformations can limit solutions that by their nature or specific context, require complex transformation processes.
+* **Data Access Performance**: views, transformations on-the-fly, query federation, and data virtualization, especially when dealing with high volumes of data, can definitely bring challenges in terms of query performance. Even if you leverage in-memory systems to run those types of tasks, you may reach, sooner or later, physical resource limits.
 * **Data Governance complexity**: query federation, data virtualization, transformations on-the-fly, and transformation embedded in semantic models make ensuring data quality and tracking data lineage more complex than using ETL tools. Indeed, ETL tools often provide these capabilities out-of-the-box or are easily integrated with enterprise-level data governance tools.
 
 You could mitigate both problems by designing an architectural approach based on the definition of different data domains managed in a decentralized way. That is, an approach that shifts the responsibility for data quality and interoperability as far upstream as possible towards the data providers. But this opens a much wider chapter.
