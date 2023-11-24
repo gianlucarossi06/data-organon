@@ -148,7 +148,7 @@ Let me mention here the most immediate ones:
 * **Overload on Source Systems**: if you query directly data sources, depending on the type of query, the number of queries, and their concurrency, you may overload data source systems that, very likely, are not supposed to serve those additional workloads.
 * **Data Governance complexity**: query federation, data virtualization, transformations on-the-fly, and transformation embedded in semantic models make ensuring data quality and tracking data lineage more complex than using ETL tools. Indeed, ETL tools often provide these capabilities out-of-the-box or are easily integrated with enterprise-level data governance tools.
 
-You could mitigate both problems by designing an architectural approach based on the definition of different data domains managed in a decentralized way. That is, an approach that shifts the responsibility for data quality and interoperability as far upstream as possible towards the data providers. But this opens a much wider chapter.
+You could mitigate some of the problems by designing an architectural approach based on the definition of different data domains managed in a decentralized way. That is, an approach that shifts the responsibility for data quality and interoperability as far upstream as possible towards the data providers. But this opens a much wider chapter.
 
 Therefore, with the assumption that it is always better to make these types of decisions with strategic direction in mind, the Zero ETL approach can certainly be evaluated as a valid substitute or, much more likely, as a supplement to the traditional ETL, carefully balancing its challenges with the benefits that it brings to the overall solution.
 
