@@ -141,10 +141,11 @@ Following the Zero ETL approach, we have seen various ways in which we can direc
 
 Clearly, this type of approach, while indicating the possible tools and methods that allow us to overcome some pain points of classic ETL/ELT processes, also introduces challenges to take into consideration.
 
-Let me mention here two of the most immediate ones:
+Let me mention here the most immediate ones:
 
 * **Limited data integration and transformation capabilities**: no, small, or on-the-fly integrations and transformations can limit solutions that by their nature or specific context, require complex transformation processes.
 * **Data Access Performance**: views, transformations on-the-fly, query federation, and data virtualization, especially when dealing with high volumes of data, can definitely bring challenges in terms of query performance. Even if you leverage in-memory systems to run those types of tasks, you may reach, sooner or later, physical resource limits.
+* **Overload on Source Systems**: if you query directly data sources, depending on the type of query, the number of queries, and their concurrency, you may overload data source systems that, very likely, are not supposed to serve those additional workloads.
 * **Data Governance complexity**: query federation, data virtualization, transformations on-the-fly, and transformation embedded in semantic models make ensuring data quality and tracking data lineage more complex than using ETL tools. Indeed, ETL tools often provide these capabilities out-of-the-box or are easily integrated with enterprise-level data governance tools.
 
 You could mitigate both problems by designing an architectural approach based on the definition of different data domains managed in a decentralized way. That is, an approach that shifts the responsibility for data quality and interoperability as far upstream as possible towards the data providers. But this opens a much wider chapter.
