@@ -1,7 +1,7 @@
 ---
 title: Zero ETL Lakehouse in Oracle Cloud
 description: Lakehouse solution in OCI with minimized or no ETL.
-date: 2023-11-23
+date: 2023-30-09
 featured_img: /data-organon/images/2023-09-30-ZeroETL-Lakehouse-Oracle-Cloud/ZERO-ETL.jpg
 ---
 
