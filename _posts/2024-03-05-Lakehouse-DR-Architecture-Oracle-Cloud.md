@@ -46,7 +46,7 @@ This article shows how to handle those additional steps and how to use **OCI Ful
 
 ## **Autonomous Data Warehouse and OCI Object Storage Initial Deployment**
 
-The initial configuration is a simple single region deployment (Region 1, *us-ashburn-1* OCI Region) with an Oracle ADW instance that can query external files (csv files, in this case) stored in an Object Storage bucket.
+The initial configuration is a simple single region deployment (Region1, *us-ashburn-1* OCI Region) with an Oracle ADW instance that can query external files (csv files, in this case) stored in an Object Storage bucket.
 
 ![Fig.2: Initial configuration: ADW and OCI Object Storage with single deployment](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/initial-configuration-region1.png)
 
@@ -113,7 +113,7 @@ This disaster recovery solution architecture design includes:
 
 ### **Disaster Recovery configuration for OCI Object Storage**
 
-You need to automatically replicate the Object Storage files from the bucket in *Region1* to the bucket in *Region2* whenever a new file is stored in the bucket or an existing one is updated. Then you enable the Object Storage cross-region replication on the bucket *lakehouse-data-region1* by configuring as a target the bucket *lakehouse-data-region2* (previously created in *Region2*).
+You need to automatically replicate the Object Storage files from the bucket in Region1 to the bucket in Region1 whenever a new file is stored in the bucket or an existing one is updated. Then you enable the Object Storage cross-region replication on the bucket *lakehouse-data-region1* by configuring as a target the bucket *lakehouse-data-region2* (previously created in Region1).
 
 Object Storage replication policy on source **bucket in Region1**:
 ![Fig.6: Region1, Object Storage replication policy on source bucket](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/replication-policy-source.png)
@@ -133,7 +133,7 @@ Autonomous Data Warehouse **Primary instance in Region1**:
 Autonomous Data Warehouse **Standby instance in Region2**:
 ![Fig.7: Region2, Autonomous Data Warehouse Standby instance for disaster recovery](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/adw-remote-standby-ams.png)
 
-In order to promptly prepare ADW for a switchover/failover to *Region2*, you can create external tables mapped on the replicated files in the target replication bucket in *Region2*.
+In order to promptly prepare ADW for a switchover/failover to Region1, you can create external tables mapped on the replicated files in the target replication bucket in Region1.
 
 This is an example of the creation of an ADW external table mapped on the same file seen above, but replicated in Region2.
 
@@ -205,7 +205,7 @@ END SWAP_SYNONYMS;
 
 ### **OCI Functions to automate DR failover process**
 
-In this DR architecture, you have to define a DR User-Defined Group with the steps that allow for a full recovery plan during switchover/failover operations to *Region2*:
+In this DR architecture, you have to define a DR User-Defined Group with the steps that allow for a full recovery plan during switchover/failover operations to Region1:
 
 * **Stop the Object Storage replication** in the bucket that is the replication target. This allows you to use it as a normal bucket for both reading and writing operations.
 * **Switch the synonyms** from to the base tables mapped on the files stored in the Region1 source bucket, to the base tables mapped on the files stored in the Region2 target bucket.
