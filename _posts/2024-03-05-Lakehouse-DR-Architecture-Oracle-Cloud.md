@@ -89,7 +89,7 @@ END;
 ```
 
 Initial ADW External Tables in Region1:
-![Fig.5: Region1, Initial ADW External Table](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/initial-external_tables-region1.png)
+![Fig.5: Region1, Initial ADW External Table](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/external-tables-ash.png)
 
 ## **Enabling automated Lakehouse Disaster Recovery switchover**
 
