@@ -51,7 +51,7 @@ The initial configuration is a simple single region deployment (Region1, *us-ash
 <!--
 ![Fig.2: Initial configuration: ADW and OCI Object Storage with single deployment](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/initial-configuration-region1.png)
 -->
-<img src="/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/initial-configuration-region1.png" alt="Fig.2: Initial configuration: ADW and OCI Object Storage with single deployment" width="500" class="center"/>
+<center><img src="/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/initial-configuration-region1.png" alt="Fig.2: Initial configuration: ADW and OCI Object Storage with single deployment" width="500"/>
 
 ### **Region1 (_us-ashburn-1_) initial configuration**
 
@@ -353,6 +353,7 @@ The groups will perform two additional **DR steps**: stopping the replication po
 
 1. **make replication OS bucket writable**. This step invokes the function *objectstorage-make-bucket-writable-python* to stop the replication policy in the target bucket (*lakehouse-data-region2*):
    ![Fig.20: Region2, add step "Stop replication" ](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/add-step1-stop-replication.png)
+
 2. **switchover ADW synonyms**. This step invokes the function *oci-adb-ords-runsql-python* to change the suffix of the synonyms base tables. In this case the new suffix will be "*2*" (so for example the synonym *CUSTOMER* will change the base table from *CUSTOMER_1* to *CUSTOMER_2*) for all the synonym in the DB schema *LHUSER*:
    ![Fig.21: Region2, add step "run sql"](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/add-step2-switch-synonyms.png)
 
