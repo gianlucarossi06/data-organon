@@ -27,9 +27,9 @@ In this article, I go over how to set up the disaster recovery solution for the 
 
 Oracle ADW is connected to an OCI Object Storage and can directly query data files ingested into Object Storage buckets.
 
-To meet Disaster Recovery cross-Region criteria, another ADW (a *Standby* ADW) is automatically set-up and kept aligned in a different OCI Region (Region2) by enabling Autonomous Data Guard.
+To meet Disaster Recovery cross-Region criteria, another ADW (a *Standby* ADW) is automatically set-up and kept aligned in a different OCI Region (Region2) by enabling **Autonomous Data Guard**.
 
-To provide a full disaster recovery solution, also the OCI Object Storage files are replicated in the OCI Region2 by creating an Object Storage replication policy.
+To provide a full disaster recovery solution, also the OCI Object Storage files are replicated in the OCI Region2 by creating an **Object Storage replication policy**.
 
 Prior to describing the configuration steps, it is important to highlight a few details:
 
@@ -39,8 +39,8 @@ Prior to describing the configuration steps, it is important to highlight a few 
 
 Then, when a failover or a switchover occurs we must be able to:
 
-* Switch the mapping of the ADW external tables to the bucket that is addressable by the secondary Region's Object Storage URI.
-* Stop the Object Storage replication policy in target bucket on Region2.
+* **Switch the mapping of the ADW external tables** to the bucket that is addressable by the secondary Region's Object Storage URI.
+* **Stop the Object Storage replication policy** in target bucket on Region2.
 
 This article shows how to handle those additional steps and how to use **OCI Full Stack Disaster Recovery (FSDR)** service to automate the entire DR switchover/failover process.
 
@@ -68,6 +68,7 @@ The initial configuration is a simple single region deployment (Region 1, *us-as
 * **Instance Name**: _ADW001_
   ![Fig.4: Region1, ADW instance](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/initial-adw-region1.png)
 * **External Tables**: In the database schema _LHUSER_ there are three external tables mapped on the correspondent Object storage files:
+  
   * *CUSTOMER_1*
   * *CUSTOMER_CONTACT_1*
   * *EXPORT_SEARCH_GENRE_1*
@@ -112,12 +113,12 @@ This disaster recovery solution architecture design includes:
 
 ### **Disaster Recovery configuration for OCI Object Storage**
 
-You need to automatically replicate the Object Storage files from the bucket in *Region1* to the bucket in *Region2* whenever a new file is stored in the bucket or an existing one is updated. Then you enable the Object Storage cross-region replication on the bucket *lakehouse-data-region1* configuring as a target the bucket in Region*lakehouse-data-region2* (previously created in *Region2*).
+You need to automatically replicate the Object Storage files from the bucket in *Region1* to the bucket in *Region2* whenever a new file is stored in the bucket or an existing one is updated. Then you enable the Object Storage cross-region replication on the bucket *lakehouse-data-region1* by configuring as a target the bucket *lakehouse-data-region2* (previously created in *Region2*).
 
-Object Storage replication policy on source bucket in Region1:
+Object Storage replication policy on source **bucket in Region1**:
 ![Fig.6: Region1, Object Storage replication policy on source bucket](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/replication-policy-source.png)
 
-Target Object Storage bucket with replication policy in Region2:
+Target Object Storage bucket with **replication policy in Region2**:
 ![Fig.7: Region2, Object Storage target bucket in Region2](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/destination-bucket-content-ams.png)
 
 ![Fig.7: Region2, Object Storage replication policy on target bucket](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/replication-policy-destination.png)
@@ -126,15 +127,15 @@ Target Object Storage bucket with replication policy in Region2:
 
 The DR configuration for ADW leverages **Autonomous Data Guard**. In the Autonomous Data Warehouse database in Region1 (*ADW001*), you enable a remote "Standby" database in Region2 (*ADW001_Remote*).
 
-Autonomous Data Warehouse Primary instance in Region1:
-![Fig.6: Region1, Autonomous Data Warehouse Primary instance for disaster recovery](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/primary-adw-region1.png)
+Autonomous Data Warehouse **Primary instance in Region1**:
+![Fig.6: Region1, Autonomous Data Warehouse Primary instance for disaster recovery](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/adw-primary-ash.png)
 
-Autonomous Data Warehouse Standby instance in Region2:
-![Fig.7: Region2, Autonomous Data Warehouse Standby instance for disaster recovery](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/standby-adw-region2.png)
+Autonomous Data Warehouse **Standby instance in Region2**:
+![Fig.7: Region2, Autonomous Data Warehouse Standby instance for disaster recovery](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/adw-remote-standby-ams.png)
 
-In order to promptly prepare ADW for a switchover/failover to *Region2*, you can already create external tables mapped on the replicated files in the target replication bucket in *Region2*.
+In order to promptly prepare ADW for a switchover/failover to *Region2*, you can create external tables mapped on the replicated files in the target replication bucket in *Region2*.
 
-This is an example of the creation of an ADW external table mapped on the same file seen above, now replicated in Region2.
+This is an example of the creation of an ADW external table mapped on the same file seen above, but replicated in Region2.
 
 ```
 BEGIN
@@ -148,12 +149,12 @@ END;
 /
 ```
 
-At this point of the process of external table creation, you have three couples of external tables, those with suffix "*_1*" that are mapped on the source bucket in Region1 and those with suffix "*_2*" mapped on the target replication bucket on Region2.
+At this point of the process, you have three couples of external tables, those with suffix "*_1*" that are mapped on the source bucket in Region1 and those with suffix "*_2*" mapped on the target replication bucket on Region2.
 
 ![Fig.8: Region1, External Tables from both Region1 and Region2 mappings](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/external-tables-region1-region2.png)
 
-You can then define synonyms based on the external table to abstract the queries against those objects from the physical names of the external tables. Then, during a DR failover process, you just need to recreate the synonyms by switching their base tables from external tables mapped on Region1 files to external tables mapped on Region2 files. This ensures that the queries against such ADW items will not require any change.
-You initially create the synonyms based on external tables with suffix *_1*, and you can keep those base tables as long as the workload is active in Region1.
+You can then define **synonyms** based on the external table to abstract the queries against those objects from the physical names of the external tables. Then, during a DR failover process, you just need to recreate the synonyms by switching their base tables from external tables mapped on Region1 files to external tables mapped on Region2 files. This ensures that the queries against such ADW items will not require any change.
+You initially create the synonyms based on external tables with suffix "*_1*", and you can keep those base tables as long as the workload is active in Region1.
 Following the naming convention used in this example, you can create the synonym with same name of the base table without the suffix.
 
 For example:
@@ -162,13 +163,13 @@ For example:
 CREATE OR REPLACE SYNONYM EXPORT_SEARCH_GENRE FOR EXPORT_SEARCH_GENRE_1;
 ```
 
-These are the synonyms created on ADW when Region1 is active:
+Let's create the **synonyms** for all the external tables:
 ![Fig.9: Region1, Synonyms created on ADW when Region1 is active](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/synonyms.png)
 
-This is a sample of synonym metadata that shows the base table:
+This is a sample of **synonym metadata** that shows the base table in Region1:
 ![Fig.9: Region1, Synonyms created on ADW when Region1 is active](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/syn-customer-base-customer1-ash.png)
 
-Finally, on ADW, you need a procedure to automatically replace all the synonyms present in a schema. The procedure will retrieve all the synonyms metadata, and execute a sql statement for each synonym to replace the base table. For example, in this case you have three synonyms and if you need to switch the synonyms after a failover from Region1 to Region2 you need to execute the following statements on ADW:
+Finally, on ADW, you need a procedure to **automatically replace all the synonyms** present in a schema. The procedure will retrieve all the synonyms metadata, and execute a sql statement for each synonym to replace the base table. In this case you have three synonyms and if you need to switch the synonyms after a failover from Region1 to Region2 you need to execute the following statements on ADW:
 
 ```
 CREATE OR REPLACE SYNONYM CUSTOMER FOR CUSTOMER_2;
@@ -176,7 +177,7 @@ CREATE OR REPLACE SYNONYM CUSTOMER_CONTACT FOR CUSTOMER_CONTACT_2;
 CREATE OR REPLACE SYNONYM EXPORT_SEARCH_GENRE FOR EXPORT_SEARCH_GENRE_2;
 ```
 
-For example, I created the following procedure *SWAP_SYNONYMS* that reads all the synonyms in the schema supplied as `SYN_SCHEMA` parameter and modify their base tables suffix with the value of the parameter `REGION_NUM`.
+As example, I created the following procedure *SWAP_SYNONYMS* that reads all the synonyms in the schema supplied as `SYN_SCHEMA` parameter and modify their base tables suffix with the value of the parameter `REGION_NUM`.
 
 ```
 CREATE OR REPLACE PROCEDURE LHUSER.SWAP_SYNONYMS
@@ -206,8 +207,8 @@ END SWAP_SYNONYMS;
 
 In this DR architecture, you have to define a DR User-Defined Group with the steps that allow for a full recovery plan during switchover/failover operations to *Region2*:
 
-* **Stop the Object Storage replication** in the bucket that is the replication target. This allows you to be able to use it as a normal bucket for both reading and writing operations.
-* **Switch the synonyms** from to the base tables mapped on the files stored in the Region1 bucket, to the base tables mapped on the files stored in the Region2 bucket.
+* **Stop the Object Storage replication** in the bucket that is the replication target. This allows you to use it as a normal bucket for both reading and writing operations.
+* **Switch the synonyms** from to the base tables mapped on the files stored in the Region1 source bucket, to the base tables mapped on the files stored in the Region2 target bucket.
 
 With **OCI Full Stack Disaster Recovery**, you have three different choices for configuring the user-defined steps:
 
@@ -221,7 +222,7 @@ As examples, the two function I used are listed below.
 
 #### Function *oci-objectstorage-make-bucket-writable-python*
 
-The first OCI Function example leverages OCI API Python SDK. There is an API for OCI Object Storage that has the ability to stop the target bucket's Object Storage replication policy. The following Python sample code uses the `make_bucket_writable` API to stop the replication policy of a bucket (the bucket name must be supplied as parameter value):
+The first OCI Function leverages **OCI API Python SDK**. The following Python sample code uses the `make_bucket_writable` API to stop the replication policy of a bucket (the bucket name must be supplied as parameter value):
 
 ```
 #
@@ -262,7 +263,7 @@ print(object.headers)
 
 #### Function *oci-adb-ords-runsql-python*
 
-The other sample OCI Function leverages the ADW Rest Data Service sql-endpoint to run a sql statement provided in the `sql` parameter value.  In this case the sql statement will be the execution of the PL-SQL procedure that switch the synonyms of the external tables.
+The second OCI Function leverages the ADW Rest Data Service sql-endpoint to run a sql statement provided in the `sql` parameter value.  In this case the sql statement will be the execution of the PL-SQL procedure that switch the base tables of the synonyms.
 
 ```
 import io
@@ -320,63 +321,73 @@ headers={"Content-Type": "application/json"}
 )
 ```
 
-> **Note**: This and many other OCI Function samples are available in the [Oracle Samples Github repository](https://github.com/oracle-samples/oracle-functions-samples). The function used in this example is documented there. The only modification that I made was to properly handle the text result of a procedure call.
+> **Note**: This and many other OCI Function samples are available in the [Oracle Samples Github repository](https://github.com/oracle-samples/oracle-functions-samples). The function used in this example is documented [here](https://github.com/oracle-samples/oracle-functions-samples/tree/master/samples/oci-adb-ords-runsql-python). The only modification that I made was to properly handle the text result of a procedure call.
 
 ### **Full Stack Disaster Recovery Configuration**
 
-To automate a DR switchover with FSDR you create (and peer) DR Protection Groups (Primary and Standby), and a DR plan with built-in and user-defined groups. In details, you need to:
+To automate a DR switchover with **FSDR** you create (and peer) **DR Protection Groups** (Primary and Standby), and a DR plan with built-in and user-defined groups. In details, you need to:
 
-* Create a DR Protection Group in Region1 (*lakehouse-dr-pg-1*) and add as member the ADW Primary instance (*ADW001*), with Role *Not Configured* (you cannot assign a Role until you have created another DR Protection Group).
+* **Create a DR Protection Group in Region1** (*lakehouse-dr-pg-1*) and add the ADW Primary instance (*ADW001*) as member, with Role *Not Configured* (you cannot assign a Role until you have created another DR Protection Group).
   ![Fig.9: Region1, DR Protection Group](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/create-dr-pg1.png)
-* Create a DR Protection Group in Region2 (*lakehouse-dr-pg-2*), add as a member the ADW Standby instance (*ADW001_Remote*), peer this group to the *lakehouse-dr-pg-1* created in Region1, and assign it the Standby Role (this will automatically assign the Role Primary to the DR Protection Group created in Region1).
+* **Create a DR Protection Group in Region2** (*lakehouse-dr-pg-2*), add the ADW Standby instance (*ADW001_Remote*) as member, peer this group to the *lakehouse-dr-pg-1* created in Region1, and assign it the **Standby** role (this will automatically assign the **Primary** role to the DR Protection Group created in Region1).
   ![Fig.10: Region2, DR Protection Group](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/create-dr-pg2.png)
-* Create a Plan for DR Protection Group in Region2 (DR Plan can only be created at the Standby DR Protection Group). For the purpose of this article I created a switchover plan.
+* Create a **DR Plan** for DR Protection Group in Region2 (DR Plan can only be created at the Standby DR Protection Group). For the purpose of this article I created a **switchover** plan.
   ![Fig.11: Region2, DR Plan](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/create-dr-plan.png)
 
 Once created, the DR Plan comes with two Built-in Plan Groups:
 
-* **Prechecks**: Perform a set of checks to validate that a DR Plan is compliant with the members and configuration of the DR Protection Groups with which the DR Plan is associated. Prechecks are used to perform ongoing DR Plan validation (DR readiness checks) to ensure that the DR Plan (DR workflow) stays aligned with the topology it protects
+* **Prechecks**: Prechecks built-in group perform a set of checks to validate that a DR Plan is compliant with the members and configuration of the DR Protection Groups with which the DR Plan is associated. Prechecks are used to perform ongoing DR Plan validation (DR readiness checks) to ensure that the DR Plan (DR workflow) stays aligned with the topology it protects
 * **Switchover Autonomous Databases**: step for ADW (*ADW001*) switchover generated automatically by Full Stack DR when DR Plan has been created.
 
 ![Fig.12: Region2, DR Plan Built-in Groups](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/dr-plan-with-builtin-groups.png)
 
-Now we can add the user-defined group (*Switchover lakehouse external tables*) that will start after the ADW switchover.
+Now you can add the user-defined group (*Switchover lakehouse external tables*) that will start after the ADW switchover.
 
 ![Fig.13: Region2, add plan group](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/add-plan-group.png)
 
-The groups will perform two additional DR steps: stopping the replication policy in the target Object Storage bucket and switching the ADW synonyms:
+The groups will perform two additional **DR steps**: stopping the replication policy in the target Object Storage bucket and switching the ADW synonyms:
 
 1. **make replication OS bucket writable**. This step invokes the function *objectstorage-make-bucket-writable-python* to stop the replication policy in the target bucket (*lakehouse-data-region2*):
    ![Fig.15: Region2, add step "Stop replication" ](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/add-step1-stop-replication.png)
 2. **switchover ADW synonyms**. This step invokes the function *oci-adb-ords-runsql-python* to change the suffix of the synonyms base tables. In this case the new suffix will be "*2*" (so for example the synonym *CUSTOMER* will change the base table from *CUSTOMER_1* to *CUSTOMER_2*) for all the synonym in the DB schema *LHUSER*:
-   ![Fig.14: Region2, add step "run sql"](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/add-step2-switch-synonyms.png)2.
+   ![Fig.14: Region2, add step "run sql"](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/add-step2-switch-synonyms.png)
 
 As final results we have a full disaster recovery plan:
-![Fig.14: Region2, add step "run sql"](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/complete-dr-plan.png).
+![Fig.14: Region2, add step "run sql"](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/complete-dr-plan.png)
 
 Once you've run the pre-built prechecks group and validated the DR plan, you're ready to switchover:
 
-![Fig.14: Region2, add step "run sql"](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/lakehouse-dr-switchover-succeeded.png).
+![Fig.14: Region2, add step "run sql"](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/lakehouse-dr-switchover-succeeded.png)
 
 The FSDR plan completed successfully!
 You can see the ADW instance in Region2 (ADW001_Remote) has changed its tole to Primary:
 
-![Fig.14: Region2, ADW001_Remote Primary role after switchover](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/adw-remote-ams-primary.png).
+![Fig.14: Region2, ADW001_Remote Primary role after switchover](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/adw-remote-ams-primary.png)
 
 The Object Storage bucket *lakehouse-data-region2* has no replication policy, and it's become writable:
 
-![Fig.14: Region2, Bucket with no replication policy](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/lakehouse-data-region2-bucket-no-replication.png).
+![Fig.14: Region2, Bucket with no replication policy](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/lakehouse-data-region2-bucket-no-replication.png)
 
 The ADW synonyms switched their base tables to the external tables with suffix *_2*. For example the synonym "CUSTOMER" now has CUSTOMER_2 as base table:
 
-![Fig.14: Region2, ADW CUSTOMER Synonym metadata](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/customer-syn-base-customer2-ams.png).
+![Fig.14: Region2, ADW CUSTOMER Synonym metadata](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/customer-syn-base-customer2-ams.png)
 
-And finally you can successfully query your lakehouse data:
+And now you can successfully query your lakehouse data:
 
-![Fig.14: Region2, ADW CUSTOMER query results on Region2](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/select-from-customer-result-ams.png).
+![Fig.14: Region2, ADW CUSTOMER query results on Region2](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/select-from-customer-result-ams.png)
 
+Finally, note that also the DR Plan (*lakehouse DR switchover*) has changed its role to *Primary*. You now may want to create a Standby DR plan in Region1 to switchover back to Region1 these components whenever you need (or to be ready in case of failover in Region2).
 
-> **Note**: Also the DR Plan (*lakehouse DR switchover*) has changed its role to *Primary*. You may want to create a similar DR plan in Region1 to switchover back to Region1 these components whenever you need (or to be ready in case of failover in Region2).
+## References
+
+* **OCI Data platform - data lakehouse**: [Oracle Architecture Center](https://docs.oracle.com/en/solutions/data-platform-lakehouse/index.html#GUID-A328ACEF-30B8-4595-B86F-F27B512744DF)
+* **Oracle Autonomous Data Warehouse**:
+  * Query External Data with Autonomous Database: [Oracle Documentation](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/query-external.html#GUID-ABF95242-3E04-42FF-9361-52707D14E833)
+  * Use Standby Databases with Autonomous Data Guard for Disaster Recovery: [Oracle Documentation](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/autonomous-data-guard.html)
+* **OCI Object Storage**: Object Storage Replication: [Oracle Documentation](https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/usingreplication.htm)
+* **OCI SDK For Python**: [Oracle Documentation](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/pythonsdk.htm)
+* **oracle-functions-samples**: [Oracle Github Repository](https://github.com/oracle-samples/oracle-functions-samples)
+* **OCI Full Stack Disaster Recovery**: [Oracle Documentation](https://docs.oracle.com/en-us/iaas/disaster-recovery/index.html)
 
 ## _Credits_
 
