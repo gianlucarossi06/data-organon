@@ -51,7 +51,7 @@ The initial configuration is a simple single region deployment (Region1, *us-ash
 <!--
 ![Fig.2: Initial configuration: ADW and OCI Object Storage with single deployment](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/initial-configuration-region1.png)
 -->
-<center><img src="/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/initial-configuration-region1.png" alt="Fig.2: Initial configuration: ADW and OCI Object Storage with single deployment" width="500"/>
+<img src="/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/initial-configuration-region1.png" alt="Fig.2: Initial configuration: ADW and OCI Object Storage with single deployment" width="500" align="middle"/>
 
 ### **Region1 (_us-ashburn-1_) initial configuration**
 
