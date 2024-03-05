@@ -17,6 +17,8 @@ description: OCI Lakehouse disaster recovery architecture with automatic failove
 
 ![](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/LAKEHOUSE-DR.jpg)
 
+It's usually a good idea to have a second pair of shoes ready to wear in case of an unexpectedly heavy storm, so you can better handle the rain...
+
 ## **Introduction**
 
 In the first series of blog posts dedicated to the disaster recovery architecture for **OCI Lakehouse**, I described the disaster recovery solution for a real-time data warehouse, focusing on the configurations of the two main components in that scenario, namely **Autonomous Data Warehouse (ADW)** and **OCI GoldenGate** (please refer to *Real Time Analytics DW DR Architecture [Part I](https://gianlucarossi06.github.io/data-organon/2023/04/20/Real-Time-Analytics-DW-DR-Architecture-(Part-I).html)* and *[Part II](https://gianlucarossi06.github.io/data-organon/2023/04/20/Real-Time-Analytics-DW-DR-Architecture-(Part-II).html)*).
@@ -91,7 +93,7 @@ END;
 /
 ```
 
-Initial ADW External Tables in Region1:
+Initial *ADW External Tables* in Region1:
 ![Fig.5: Region1, Initial ADW External Table](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/external-tables-ash.png)
 
 ## **Enabling automated Lakehouse Disaster Recovery switchover**
