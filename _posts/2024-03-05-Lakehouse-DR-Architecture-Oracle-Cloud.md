@@ -48,10 +48,10 @@ This article shows how to handle those additional steps and how to use **OCI Ful
 
 The initial configuration is a simple single region deployment (Region1, *us-ashburn-1* OCI Region) with an Oracle ADW instance that can query external files (csv files, in this case) stored in an Object Storage bucket.
 
-<!-->
+<!--
 ![Fig.2: Initial configuration: ADW and OCI Object Storage with single deployment](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/initial-configuration-region1.png)
 -->
-<img src="/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/initial-configuration-region1.png" alt="Fig.2: Initial configuration: ADW and OCI Object Storage with single deployment" width="500"/>
+<img src="/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/initial-configuration-region1.png" alt="Fig.2: Initial configuration: ADW and OCI Object Storage with single deployment" width="500" class="center"/>
 
 ### **Region1 (_us-ashburn-1_) initial configuration**
 
