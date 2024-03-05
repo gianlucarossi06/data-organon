@@ -163,7 +163,8 @@ For example:
 CREATE OR REPLACE SYNONYM EXPORT_SEARCH_GENRE FOR EXPORT_SEARCH_GENRE_1;
 ```
 
-Let's create the **synonyms** for all the external tables:
+You create the **synonyms** for all the external tables:
+
 ![Fig.13: Region1, Synonyms created on ADW when Region1 is active](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/synonyms.png)
 
 This is a sample of **synonym metadata** that shows the base table in Region1:
