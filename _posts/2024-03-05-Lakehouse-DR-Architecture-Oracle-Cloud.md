@@ -384,7 +384,9 @@ Finally, note that also the DR Plan (*lakehouse DR switchover*) has changed its 
 * **Oracle Autonomous Data Warehouse**:
   * Query External Data with Autonomous Database: [Oracle Documentation](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/query-external.html#GUID-ABF95242-3E04-42FF-9361-52707D14E833)
   * Use Standby Databases with Autonomous Data Guard for Disaster Recovery: [Oracle Documentation](https://docs.oracle.com/en-us/iaas/autonomous-database-serverless/doc/autonomous-data-guard.html)
+  * RESTful Services in Autonomous Database: [Oracle Documentation](https://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/ords-autonomous-database.html#GUID-E2E921FF-2D80-4E32-9660-28506D10BADB)
 * **OCI Object Storage**: Object Storage Replication: [Oracle Documentation](https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/usingreplication.htm)
+* **OCI Function**: [Oracle Documentation](https://docs.oracle.com/en-us/iaas/Content/Functions/home.htm)
 * **OCI SDK For Python**: [Oracle Documentation](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/pythonsdk.htm)
 * **oracle-functions-samples**: [Oracle Github Repository](https://github.com/oracle-samples/oracle-functions-samples)
 * **OCI Full Stack Disaster Recovery**: [Oracle Documentation](https://docs.oracle.com/en-us/iaas/disaster-recovery/index.html)
