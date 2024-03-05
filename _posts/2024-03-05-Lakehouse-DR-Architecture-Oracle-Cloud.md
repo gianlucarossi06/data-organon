@@ -352,29 +352,31 @@ The groups will perform two additional **DR steps**: stopping the replication po
 2. **switchover ADW synonyms**. This step invokes the function *oci-adb-ords-runsql-python* to change the suffix of the synonyms base tables. In this case the new suffix will be "*2*" (so for example the synonym *CUSTOMER* will change the base table from *CUSTOMER_1* to *CUSTOMER_2*) for all the synonym in the DB schema *LHUSER*:
    ![Fig.21: Region2, add step "run sql"](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/add-step2-switch-synonyms.png)
 
-As final results we have a full disaster recovery plan:
+As final results we have a multi-region full disaster recovery plan:
 ![Fig.22: Region2, add step "run sql"](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/complete-dr-plan.png)
+
+![Fig.23 Region2, DR Plan MAP](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/fsdr-plan-region-map.png)
 
 Once you've run the pre-built prechecks group and validated the DR plan, you're ready to switchover:
 
-![Fig.23: Region2, add step "run sql"](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/lakehouse-dr-switchover-succeeded.png)
+![Fig.24: Region2, add step "run sql"](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/lakehouse-dr-switchover-succeeded.png)
 
 The FSDR plan completed successfully!
 You can see the ADW instance in Region2 (ADW001_Remote) has changed its tole to Primary:
 
-![Fig.24: Region2, ADW001_Remote Primary role after switchover](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/adw-remote-ams-primary.png)
+![Fig.25: Region2, ADW001_Remote Primary role after switchover](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/adw-remote-ams-primary.png)
 
 The Object Storage bucket *lakehouse-data-region2* has no replication policy, and it's become writable:
 
-![Fig.25: Region2, Bucket with no replication policy](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/lakehouse-data-region2-bucket-no-replication.png)
+![Fig.26: Region2, Bucket with no replication policy](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/lakehouse-data-region2-bucket-no-replication.png)
 
 The ADW synonyms switched their base tables to the external tables with suffix *_2*. For example the synonym "CUSTOMER" now has CUSTOMER_2 as base table:
 
-![Fig.26: Region2, ADW CUSTOMER Synonym metadata](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/customer-syn-base-customer2-ams.png)
+![Fig.27: Region2, ADW CUSTOMER Synonym metadata](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/customer-syn-base-customer2-ams.png)
 
 And now you can successfully query your lakehouse data:
 
-![Fig.27: Region2, ADW CUSTOMER query results on Region2](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/select-from-customer-result-ams.png)
+![Fig.28: Region2, ADW CUSTOMER query results on Region2](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/select-from-customer-result-ams.png)
 
 Finally, note that also the DR Plan (*lakehouse DR switchover*) has changed its role to *Primary*. You may want to create a Standby DR plan in Region1 to switchover back to Region1 these components whenever you need (or to be ready in case of failover in Region2).
 
