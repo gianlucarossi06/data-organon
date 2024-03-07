@@ -37,7 +37,7 @@ In order to ensure that the solution works completely in the case of a region sw
 
 This article shows how to handle all those configuration steps and how to use **OCI Full Stack Disaster Recovery (FSDR)** service to automate the entire DR switchover/failover process.
 
-## **Initial Single Region Deployment**
+## **Single Region Initial Deployment**
 
 The initial configuration is a simple single region deployment (Region1, *us-ashburn-1* OCI Region) with an Oracle ADW instance that can query external files (csv files, in this case) stored in an Object Storage bucket.
 
@@ -89,7 +89,7 @@ END;
 ```
 
 Initial *ADW External Tables* in Region1:
-![Fig.5: Region1, Initial ADW External Table](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/external-tables-ash.png)
+![Fig.5: Region1, Initial ADW External Table](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/external-tables-initial-ash.png)
 
 ## **Enabling automated Lakehouse Disaster Recovery switchover**
 
@@ -114,9 +114,9 @@ We create OCI Functions to programmatically execute those task, since we don't w
 
 But how to create a disaster recovery plan that can automatically carry out all necessary tasks in the appropriate order?
 
-This is where Oracle Full Stack Disaster Recovery comes into play. With the help of this OCI service, you can create, test, implement, and monitor a disaster recovery plan that covers every step required to fully automate the cross-region switchover process. In this situation, it will enable us to swap the ADW instances and invoke the helpful OCI Functions in order to bring the solution's functionality back to full capacity in the new region.
+This is where Oracle **Full Stack Disaster Recovery** comes into play. With the help of this OCI service, you can create, test, implement, and monitor a disaster recovery plan that covers every step required to fully automate the cross-region switchover process. In this situation, it will enable us to swap the ADW instances and invoke the helpful OCI Functions in order to bring the solution's functionality back to full capacity in the new region.
 
-In details, this disaster recovery solution architecture design includes these steps:
+In details, this disaster recovery solution architecture includes these steps:
 
 * **Disaster Recovery configuration for OCI Object Storage**:
   * Enabling **replication policy** in the Object Storage bucket in Region1.
