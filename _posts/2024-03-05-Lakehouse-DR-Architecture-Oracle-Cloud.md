@@ -403,7 +403,7 @@ And now you can successfully query your lakehouse data:
 
 ![Fig.28: Region2, ADW CUSTOMER query results on Region2](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/select-from-customer-result-ams.png)
 
-Finally, note that also the DR Plan (*lakehouse DR switchover*) has changed its role to *Primary*. You may want to create a Standby DR plan in Region1 to switchover back to Region1 these components whenever you need (or to be ready in case of failover in Region2).
+Finally, note that also the FSDR Protection Group in Region2 (*lakehouse-dr-pg-2*) has changed its role to *Primary*. Since *lakehouse-dr-pg-1* is now a *Standby* group, you can now prepare a disaster recovery plan in Region1 so that you can always switch back to these components in Region1 whenever you need (or in case of failover in Region2).
 
 ## References
 
