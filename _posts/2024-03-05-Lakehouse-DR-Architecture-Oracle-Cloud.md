@@ -91,7 +91,7 @@ END;
 Initial *ADW External Tables* in Region1:
 ![Fig.5: Region1, Initial ADW External Table](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/external-tables-initial-ash.png)
 
-## **Enabling automated Lakehouse Disaster Recovery switchover**
+## **Enabling automated Lakehouse DR switchover**
 
 The following logical architecture shows the target configurations and components created for this Lakehouse cross-region disaster recovery sample architecture:
 
