@@ -349,7 +349,7 @@ headers={"Content-Type": "application/json"}
 
 ### **Full Stack Disaster Recovery Configuration**
 
-To automate a DR switchover with ** OCI FSDR** you create (and peer) **DR Protection Groups** (Primary and Standby), and a DR plan with built-in and user-defined groups. You can define different types of DR Plan to test and execute DR procedures (see [DR Plans documentation](https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/disaster-recovery/doc/dr-plans-type.html#GUID-C36FF3CC-4702-40E3-B41C-38F53199A492) for details).
+To automate a DR switchover with **OCI FSDR** you create (and peer) **DR Protection Groups** (Primary and Standby), and a DR plan with built-in and user-defined groups. You can define different types of DR Plan to test and execute DR procedures (see [DR Plans documentation](https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/disaster-recovery/doc/dr-plans-type.html#GUID-C36FF3CC-4702-40E3-B41C-38F53199A492) for details).
 For the purpose of this article I created a **switchover** plan. In this case, you need to:
 
 * **Create a DR Protection Group in Region1** (*lakehouse-dr-pg-1*) and add the ADW Primary instance (*ADW001*) as member, with Role *Not Configured* (you cannot assign a Role until you have created another DR Protection Group).
