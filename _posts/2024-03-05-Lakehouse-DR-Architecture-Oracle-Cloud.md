@@ -15,7 +15,7 @@ description: OCI Lakehouse disaster recovery architecture with automatic failove
   gtag('config', 'G-WP81WC62NJ');
 </script>
 
-![](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/LAKEHOUSE-DR.jpg)
+![](/data-organon/images/2024-02-29-Lakehouse-DR-Architecture-Oracle-Cloud/LAKEHOUSE-DR.jpeg)
 
 It's usually a good idea to have a second pair of shoes ready to wear in case of an unexpectedly heavy storm, so you can better handle the rain...
 
