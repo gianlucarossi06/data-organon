@@ -99,7 +99,7 @@ The following logical architecture shows the target configurations and component
 
 The core components of the architecture are Autonomous Data Warehouse and OCI Object Storage. First, we enable their replication capabilities (Object Storage Replication and Autonomous Data Guard) to provide the standby remote region (Region2) with a copy of the files of the Object Storage bucket and a standby instance of the Autonomous Data Warehouse.
 
-For this scenario, is important to highlight a few details:
+For this scenario, it's important to highlight a few details:
 
 * Oracle ADW generates external tables that map specific bucket URIs in order to query files on Object Storage.
 * The base Object Storage URI of the Region1 is different from the Object Storage base URI in the Region2.
