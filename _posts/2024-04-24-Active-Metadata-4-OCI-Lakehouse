@@ -3,3 +3,34 @@ title: Managing Active Metadata for OCI Lakehouse
 description: Managing active metadata with OCI Data Catalog for an OCI Lkehouse architecture.
 hide : true
 ---
+
+<!-- Google tag (gtag.js) -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WP81WC62NJ"></script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WP81WC62NJ');
+</script>
+
+![](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/ACTIVE-METADATA.jpeg)
+
+## **Introduction**
+
+Introduction on the importance of metadata and metadata type
+
+Description and summary of this blog.
+
+Architecture deployment and description of the components functionality
+
+<!--
+In this article, I go over how to set up the disaster recovery solution for the data server engine, the **Autonomous Data Warehouse**, and the integrated external storage, **OCI Object Storage**, which make up the core of persistence and data serving layer of this OCI Lakehouse architecture.
+-->
+
+![Fig.1: Active Metatadata for OCI Lakehouse Architecture Deployment](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/Active-Metadata-Physical-Deployment.png)
+
+
+
