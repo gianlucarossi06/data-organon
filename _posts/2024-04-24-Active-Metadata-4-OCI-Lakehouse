@@ -30,7 +30,53 @@ Architecture deployment and description of the components functionality
 In this article, I go over how to set up the disaster recovery solution for the data server engine, the **Autonomous Data Warehouse**, and the integrated external storage, **OCI Object Storage**, which make up the core of persistence and data serving layer of this OCI Lakehouse architecture.
 -->
 
-![Fig.1: Active Metatadata for OCI Lakehouse Architecture Deployment](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/Active-Metadata-Physical-Deployment.png)
+![Fig.1: Active Metatadata for OCI Lakehouse - Architecture Deployment](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/Active-Metadata-Physical-Deployment.png)
+
+## Initial Solution
+
+Description of the lakehouse solution with:
+
+Lakehouse
+- Autonomous Data Warehouse, description of simple model
+- Object Storage, description of bucket and files
+- OCI Data Integration with description of task, piplines per caricare il modello target su ADW
+- OCI Data Catalog, per gestire tutti i metadati:
+- Technical metadata of
+- ADW e OCI Asset
+  - Entities
+- Business Metadata (Glossary)
+- Data Process Metadata (Lineage):
+ - Description of OCI DI Lineage for the entities 
+
+## Managing Active Metadata with OCI Data Catalog
+
+Breve descrizione della soluzione. Creazione di custom properties, creazione di funzioni in grado di aggiornare le custom properties degli oggetti di OCI Data Catalog, aggiunta delle function tra i task di OCI Data Integration.
+
+### Adding Custom Properties to OCI Data Catalog objects
+
+You can leverage OCI Data Catalog custom properties to add all the active metadata that you think are useful for the data consumer.
+Custom properties are etc...
+You create a custom property and then associate it to the type of OCI Data Catalog objects che ha senso arricchire con quel metadato. Tipici esempi di oggetti sono...
+Per esempio you might want to create active metadata that can provide information about:
+- Availability/unavailability of an entity/folder/data asset
+- Results of the last entity/folder/data asset refresh
+- Datetime of the last entity/folder/data asset refresh
+- Results of quality checks of an entity/folder/data asset
+
+In this case, as example of active metadata, I create a custom properties that shows the results of the last update.
+I create the custom properties named "" with two possible value ...
+
+fig.
+
+Well, now I need to make this properties "Active".
+
+### Creating OCI Function to update OCI Data Catalog custom properties
+
+### Adding OCI Data Integration task to update custom properties
+
+### Leveraging OCI Data Integration events to update custom properties
+
+## Conclusion
 
 
 
