@@ -37,15 +37,15 @@ In this article, I go over how to set up the disaster recovery solution for the 
 
 ## Starting Solution
 
-Let's consider this example of lakehouse architecture solution in OCI:
+Let's consider this example of Lakehouse architecture solution in OCI:
 
 ![Fig.1: OCI Lakehouse initial solution architecture](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/OCI-Lakehouse-initial-solution.png)
 
 Lakehouse
 
-- Autonomous Data Warehouse, description of simple model
-- Object Storage, description of bucket and files
-- OCI Data Integration with description of task, piplines per caricare il modello target su ADW---> **Fai vedere la pipeline senza rest API****
+- Autonomous Data Warehouse, description of simple model-->fai vedere lo schema su developer
+- Object Storage, description of bucket and files: fai vedere bucket
+- OCI Data Integration with description of task, piplines per caricare il modello target su ADW---> ** (elence gli oggetti ma Fai vedere dolo la pipeline senza rest API**
 - OCI Data Catalog, per gestire tutti i metadati:
 - Technical metadata of
 - ADW e OCI Asset
@@ -75,7 +75,7 @@ I create the custom properties named "" with two possible value ...
 
 fig.
 
-Well, now I need to make this properties "Active".
+Well, now let's make those properties "Active".
 
 ### Creating OCI Function to update OCI Data Catalog custom properties
 
