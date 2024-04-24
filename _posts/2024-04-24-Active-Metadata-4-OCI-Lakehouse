@@ -20,33 +20,39 @@ hide : true
 
 ## **Introduction**
 
-Introduction on the importance of metadata and metadata type
+Metadata management is becoming more and more important in Data Platform solutions. Regardless of whether the data architecture is distributed or centralized, users must be able to discover the data, comprehend its technical components, grasp its business significance, learn the quality level, understand the sources of the data, and comprehend how it has been transformed and integrated. Data consumers can use the data to its fullest potential thanks to all of that information, and they also get data trust, which is essential for the solution to be broadly adopted.
 
-Description and summary of this blog.
+The specific categories of metadata known as *active metadata* tell us something about the current state of the data. They make reference to things like their most recent update status and datetime, their availability or unavailability, and their proximity or distance from the SLOs that were previously established for the different quality controls. As a result, they are dynamic metadata by definition. Indeed, active.
 
-Architecture deployment and description of the components functionality
+In this article, I focus on enabling and managing *active metadata* for a Lakehouse solution in OCI.
 
 <!--
+
+Architecture deployment and description of the components functionality.
+
 In this article, I go over how to set up the disaster recovery solution for the data server engine, the **Autonomous Data Warehouse**, and the integrated external storage, **OCI Object Storage**, which make up the core of persistence and data serving layer of this OCI Lakehouse architecture.
--->
 
 ![Fig.1: Active Metatadata for OCI Lakehouse - Architecture Deployment](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/Active-Metadata-Physical-Deployment.png)
+-->
 
-## Initial Solution
+## Starting Solution
 
-Description of the lakehouse solution with:
+Let's consider this example of lakehouse architecture solution in OCI:
+
+![Fig.1: OCI Lakehouse initial solution architecture](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/OCI-Lakehouse-initial-solution.png)
 
 Lakehouse
+
 - Autonomous Data Warehouse, description of simple model
 - Object Storage, description of bucket and files
-- OCI Data Integration with description of task, piplines per caricare il modello target su ADW
+- OCI Data Integration with description of task, piplines per caricare il modello target su ADW---> **Fai vedere la pipeline senza rest API****
 - OCI Data Catalog, per gestire tutti i metadati:
 - Technical metadata of
 - ADW e OCI Asset
   - Entities
 - Business Metadata (Glossary)
 - Data Process Metadata (Lineage):
- - Description of OCI DI Lineage for the entities 
+- Description of OCI DI Lineage for the entities
 
 ## Managing Active Metadata with OCI Data Catalog
 
@@ -54,10 +60,11 @@ Breve descrizione della soluzione. Creazione di custom properties, creazione di 
 
 ### Adding Custom Properties to OCI Data Catalog objects
 
-You can leverage OCI Data Catalog custom properties to add all the active metadata that you think are useful for the data consumer.
+You can leverage OCI Data Catalog custom properties to add all the active metadata that you think are useful to share with data consumers.
 Custom properties are etc...
 You create a custom property and then associate it to the type of OCI Data Catalog objects che ha senso arricchire con quel metadato. Tipici esempi di oggetti sono...
 Per esempio you might want to create active metadata that can provide information about:
+
 - Availability/unavailability of an entity/folder/data asset
 - Results of the last entity/folder/data asset refresh
 - Datetime of the last entity/folder/data asset refresh
@@ -77,6 +84,4 @@ Well, now I need to make this properties "Active".
 ### Leveraging OCI Data Integration events to update custom properties
 
 ## Conclusion
-
-
 
