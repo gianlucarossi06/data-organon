@@ -43,16 +43,16 @@ Let's consider this example of Lakehouse architecture solution in OCI:
 
 Lakehouse
 
-- Autonomous Data Warehouse, description of simple model-->fai vedere lo schema su developer
+- Autonomous Data Warehouse, description of simple model-->fai vedere lo schema su sql developer
 - Object Storage, description of bucket and files: fai vedere bucket
-- OCI Data Integration with description of task, piplines per caricare il modello target su ADW---> ** (elence gli oggetti ma Fai vedere dolo la pipeline senza rest API**
+- OCI Data Integration with description of task, piplines per caricare il modello target su ADW---> ** (elence gli oggetti ma Fai vedere dolo la pipeline senza rest AP che va aggiunta per invocare la funzione che imposta i metdati attivi**
 - OCI Data Catalog, per gestire tutti i metadati:
 - Technical metadata of
-- ADW e OCI Asset
-  - Entities
-- Business Metadata (Glossary)
-- Data Process Metadata (Lineage):
-- Description of OCI DI Lineage for the entities
+- ADW e OCI Asset:
+  - Entities.
+- Business Metadata (Glossary).
+- Data Process Metadata (Lineage).
+- Description of OCI DI Lineage for the entities.
 
 ## Managing Active Metadata with OCI Data Catalog
 
