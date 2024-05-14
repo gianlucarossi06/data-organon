@@ -41,11 +41,15 @@ Let's consider this example of Lakehouse architecture solution in OCI:
 
 ![Fig.1: OCI Lakehouse initial solution architecture](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/OCI-Lakehouse-initial-solution.png)
 
-Lakehouse
+It's an example of OCI Lakehouse solution built with:
 
-- Autonomous Data Warehouse, description of simple model-->fai vedere lo schema su sql developer
-- Object Storage, description of bucket and files: fai vedere bucket
-- OCI Data Integration with description of task, piplines per caricare il modello target su ADW---> ** (elence gli oggetti ma Fai vedere dolo la pipeline senza rest AP che va aggiunta per invocare la funzione che imposta i metdati attivi**
+- Autonomous Data Warehouse, with a data model composed of four tables: REVENUE_TARGET, CUSTOMERS_TARGET,EMPLOYEES_WEST_MIDWEST, EMPLOYEES_WEST_MIDWEST:
+  ![Fig.2: OCI Lakehouse ADW data models](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/adw-data-model.png)
+
+- OCI Object Storage, with the bucket "DI-bucket" that stores the files used to load curated data into ADW data model:
+  ![Fig.3: OCI Lakehouse Object Storage Bucket](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/DI-bucket.png)
+
+- OCI Data Integration, with description of task, piplines per caricare il modello target su ADW---> ** (elence gli oggetti ma Fai vedere dolo la pipeline senza rest AP che va aggiunta per invocare la funzione che imposta i metdati attivi**
 - OCI Data Catalog, per gestire tutti i metadati:
 - Technical metadata of
 - ADW e OCI Asset:
@@ -56,12 +60,12 @@ Lakehouse
 
 ## Managing Active Metadata with OCI Data Catalog
 
-Breve descrizione della soluzione. Creazione di custom properties, creazione di funzioni in grado di aggiornare le custom properties degli oggetti di OCI Data Catalog, aggiunta delle function tra i task di OCI Data Integration.
+Breve descrizione della soluzione. You can leverage OCI Data Catalog custom properties to add all the active metadata that you think are useful to share with data consumers.
+Custom properties are etc.. 
+Creazione di custom properties, creazione di funzioni in grado di aggiornare le custom properties degli oggetti di OCI Data Catalog, aggiunta delle function tra i task di OCI Data Integration.
 
 ### Adding Custom Properties to OCI Data Catalog objects
 
-You can leverage OCI Data Catalog custom properties to add all the active metadata that you think are useful to share with data consumers.
-Custom properties are etc...
 You create a custom property and then associate it to the type of OCI Data Catalog objects che ha senso arricchire con quel metadato. Tipici esempi di oggetti sono...
 Per esempio you might want to create active metadata that can provide information about:
 
@@ -75,13 +79,13 @@ I create the custom properties named "" with two possible value ...
 
 fig.
 
-Well, now let's make those properties "Active".
+Well, now let's make that properties "Active".
 
 ### Creating OCI Function to update OCI Data Catalog custom properties
 
-### Adding OCI Data Integration task to update custom properties
+### Option 1: Adding OCI Data Integration task to update custom properties
 
-### Leveraging OCI Data Integration events to update custom properties
+### Option 2: Leveraging OCI Data Integration events to update custom properties
 
 ## Conclusion
 
