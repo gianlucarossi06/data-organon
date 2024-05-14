@@ -41,18 +41,18 @@ Let's consider this example of Lakehouse architecture solution in OCI:
 
 ![Fig.1: OCI Lakehouse initial solution architecture](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/OCI-Lakehouse-initial-solution.png)
 
-It's an example of OCI Lakehouse solution built with:
+It's a simple OCI Lakehouse solution initially made by:
 
-- Autonomous Data Warehouse, with a data model composed of four tables: REVENUE_TARGET, CUSTOMERS_TARGET,EMPLOYEES_WEST_MIDWEST, EMPLOYEES_WEST_MIDWEST:
+- **Autonomous Data Warehouse**, with a data model composed of four tables: *REVENUE_TARGET*, *CUSTOMERS_TARGET*,*EMPLOYEES_WEST_MIDWEST*, *EMPLOYEES_WEST_MIDWEST*:
   ![Fig.2: OCI Lakehouse ADW data models](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/adw-data-model.png)
-
-- OCI Object Storage, with the bucket "DI-bucket" that stores the files used to load curated data into ADW data model:
+- **OCI Object Storage**, with the bucket "*DI-bucket*" that stores the files used to load curated data into ADW data model:
   ![Fig.3: OCI Lakehouse Object Storage Bucket](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/DI-bucket.png)
-
-- OCI Data Integration, with description of task, piplines per caricare il modello target su ADW---> ** (elence gli oggetti ma Fai vedere dolo la pipeline senza rest AP che va aggiunta per invocare la funzione che imposta i metdati attivi**
-- OCI Data Catalog, per gestire tutti i metadati:
+- **OCI Data Integration**, with the workspace "*data-platform-workspace-01*" which includes task, data loads and pipelines that load data into the ADW data model. The picture below shows the main pipeline ("*Load DWH Pipeline*") with all the steps to load the ADW target tables:
+  ![Fig.4: OCI Data Integration Pipeline](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/OCIDI-pipeline.png)
+- **OCI Data Catalog**, per gestire tutti i metadati:
 - Technical metadata of
 - ADW e OCI Asset:
+  
   - Entities.
 - Business Metadata (Glossary).
 - Data Process Metadata (Lineage).
@@ -61,7 +61,7 @@ It's an example of OCI Lakehouse solution built with:
 ## Managing Active Metadata with OCI Data Catalog
 
 Breve descrizione della soluzione. You can leverage OCI Data Catalog custom properties to add all the active metadata that you think are useful to share with data consumers.
-Custom properties are etc.. 
+Custom properties are etc..
 Creazione di custom properties, creazione di funzioni in grado di aggiornare le custom properties degli oggetti di OCI Data Catalog, aggiunta delle function tra i task di OCI Data Integration.
 
 ### Adding Custom Properties to OCI Data Catalog objects
