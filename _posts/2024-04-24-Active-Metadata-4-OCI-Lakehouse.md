@@ -347,7 +347,6 @@ Open discussion.
 
 - **OCI Data Platform**: [Oracle Architecture Center](https://docs.oracle.com/en/solutions/data-platform-lakehouse/index.html#GUID-A328ACEF-30B8-4595-B86F-F27B512744DF)
 - **OCI Data Catalog**: [Oracle Documentation](https://docs.oracle.com/en-us/iaas/data-catalog/home.htm)
-- **OCI SDK For Python**: [Oracle Documentation](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/pythonsdk.htm)
-- **Python SDK Reference**: [Oracle Documentation](https://docs.oracle.com/en-us/iaas/tools/python/2.126.4/api/landing.html)
+- **OCI Python SDK Reference**: [Oracle Documentation](https://docs.oracle.com/en-us/iaas/tools/python/2.126.4/api/landing.html)
 - **OCI Function**: [Oracle Documentation](https://docs.oracle.com/en-us/iaas/Content/Functions/home.htm)
 - **oracle-functions-samples**: [Oracle Github Repository](https://github.com/oracle-samples/oracle-functions-samples)
