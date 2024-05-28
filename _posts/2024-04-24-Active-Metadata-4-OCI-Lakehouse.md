@@ -329,12 +329,25 @@ Finally, I add two tasks to the pipeline that loads ADW tables to update the *Cu
 
 We have seen how to enable dynamic updating of the Oracle Data Platform's active metadata. The choice between the two suggested methods, use of OCI Events or OCI DI Tasks, might depend on the weight you want to give to a couple of aspects that characterize the two solutions:
 
-OCI Event: 
- - No impact for existing or new OCI DI Tasks.
- - You cannot use OCI Function request payload (that means no usage of parameters, thus higher number of OCI Function deployments, potentially)
+**OCI Event**:
 
-OCI DI Task:
+- No impact for existing or new OCI DI Tasks.
+- You cannot use OCI Function request payload (that means no usage of parameters, thus higher number of OCI Function deployments, potentially)
+
+**OCI DI Task**:
+
 - Impacts on OCI DI Tasks (new Rest tasks and modification of existing Pipeline ones)
 - You can use request payload when invoking OCI Function
 
+Or it might depend on the different fundamental approach that implicitly the two solutions suggest: must the metadata update be part of the data update? Do you want the entire process to result in errors if the metadata update fails for whatever reason, or may it be acceptable that the outcome of the data process is positive regardless of whether their active metadata has been successfully updated? 
+
+Open discussion.
+
 ## References
+
+- **OCI Data Platform**: [Oracle Architecture Center](https://docs.oracle.com/en/solutions/data-platform-lakehouse/index.html#GUID-A328ACEF-30B8-4595-B86F-F27B512744DF)
+- **OCI Data Catalog**: [Oracle Documentation](https://docs.oracle.com/en-us/iaas/data-catalog/home.htm)
+- **OCI SDK For Python**: [Oracle Documentation](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/pythonsdk.htm)
+- **Python SDK Reference**: [Oracle Documentation](https://docs.oracle.com/en-us/iaas/tools/python/2.126.4/api/landing.html)
+- **OCI Function**: [Oracle Documentation](https://docs.oracle.com/en-us/iaas/Content/Functions/home.htm)
+- **oracle-functions-samples**: [Oracle Github Repository](https://github.com/oracle-samples/oracle-functions-samples)
