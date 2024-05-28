@@ -1,6 +1,6 @@
 ---
-title: Managing Active Metadata for OCI Lakehouse
-description: Managing active metadata with OCI Data Catalog for an OCI Lkehouse architecture.
+title: Managing Active Metadata with Oracle Data Platform
+description: Managing active metadata with OCI Data Catalog for an Oracle Data Platform architecture.
 ---
 
 <!-- Google tag (gtag.js) -->
@@ -23,7 +23,7 @@ Metadata management is becoming more and more important in Data Platform solutio
 
 The specific categories of metadata known as *active metadata* tell us something about the current state of the data. They make reference to things like their most recent update status and time, their availability or unavailability, and their proximity or distance from the SLOs that were previously established for the different quality controls. As a result, they are dynamic metadata by definition. Indeed, active.
 
-In this article, I focus on enabling and managing *active metadata* for a Lakehouse solution in OCI.
+In this article, I focus on enabling and managing *active metadata* for a Data Platform solution in OCI.
 
 <!--
 
@@ -36,33 +36,33 @@ In this article, I go over how to set up the disaster recovery solution for the 
 
 ## Starting Solution
 
-Let's consider Lakehouse architecture solution in OCI:
+Let's consider this Data Platform solution in OCI:
 
 ![Fig.1: OCI Lakehouse initial solution architecture](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/OCI-Lakehouse-initial-solution.png)
 
-It's an example of OCI Lakehouse solution initially made by:
+It's an example of OCI Lakehouse architecture that  initially is made by:
 
 - **Autonomous Data Warehouse**, with a sample data model composed of a schema *ADWUSER01* with four tables for curated data: *REVENUE_TARGET*, *CUSTOMERS_TARGET*,*EMPLOYEES_WEST_MIDWEST*, *EMPLOYEES_WEST_MIDWEST*
 - **OCI Object Storage**, with the bucket *DI-Bucket* that stores files used to load curated data into the ADW data model:
-
+  
   ![Fig.3: OCI Lakehouse Object Storage Bucket](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/DI-bucket.png)
-
 - **OCI Data Integration**, with a workspace which includes tasks, data loads and pipelines that load data into the ADW data model. As an example, the picture below shows the main pipeline with the steps to load the ADW target tables:
-
+  
   ![Fig.4: OCI Data Integration Pipeline](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/OCIDI-pipeline.png)
-
+  
 - **OCI Data Catalog**, to manage both technical and business metadata of the Lakehouse data assets, and the entity data lineage based on OCI Data Integration loading tasks:
- - Example of entity **technical metadata**:
+  
+  - Example of entity **technical metadata**:
 
-  ![Fig.5: OCI Data Catalog Technical Metadata](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/dcat-customer-technical-metadata.png)
+    ![Fig.5: OCI Data Catalog Technical Metadata](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/dcat-customer-technical-metadata.png)
 
- - **Business Glossary**:
+  - **Business Glossary**:
 
-  ![Fig.6: OCI Data Catalog Business Glossary](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/dcat-business-glossary.png)
+    ![Fig.6: OCI Data Catalog Business Glossary](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/dcat-business-glossary.png)
 
- - Example of **Data Lineage** metadata:
+  - Example of **Data Lineage** metadata:
 
-  ![Fig.7: OCI Data Catalog Lineage](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/dcat-lineage.png)
+    ![Fig.7: OCI Data Catalog Lineage](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/dcat-lineage.png)
 
 Now we need to add active metadata to promptly update data consumers about the status of the data assets.
 
