@@ -64,7 +64,7 @@ It's an example of OCI Lakehouse architecture that  initially is made by:
 
     ![Fig.7: OCI Data Catalog Lineage](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/dcat-lineage.png)
 
-Now we need to add active metadata to promptly update data consumers about the status of the data assets.
+Now we need to add active metadata to promptly inform data consumers about the status of the data assets.
 
 ## Adding Active Metadata
 
