@@ -310,16 +310,16 @@ And the active metadata now shows the value expected in the event of an error:
 
 ### Option 2: Updating Active Metadata with OCI Data Integration task
 
-By including OCI Data Integration RestAPI tasks that make use of OCI Functions RestAPI endpoints, updating the Custom Properties can also be a part of the data pipelines process in OCI Data Integration.
+By including OCI Data Integration Rest tasks that make use of OCI Functions endpoints, updating the Custom Properties can also be a part of the data pipelines process in OCI Data Integration.
 
-For this article, I create two OCI Data Integration RestAPI tasks which invoke the example of OCI Function that updates an entity Custom Properties.
-As example, below you can see the RestAPI task for the successful updates of the *Customer* entity:
+For this article, I create two OCI Data Integration Rest tasks which invoke the example of OCI Function that updates an entity Custom Properties.
+As example, below you can see the Rest task for the successful updates of the *Customer* entity:
 
-![Fig.18: RestAPI task OCI Data Integration](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/oci-di-rest-api-task.png)
+![Fig.18: Rest task OCI Data Integration](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/oci-di-rest-api-task.png)
 
 The details of the RestAPI shows the OCI Function endpoint configured as URL for the POST method and, in the request section, the JSON structure with the OCI Function input parameters values:
 
-![Fig.19: OCI DI RestAPI task details](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/rest-task-details.png)
+![Fig.19: OCI DI Rest task details](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/rest-task-details.png)
 
 Finally, I add two tasks to the pipeline that loads ADW tables to update the *Customer* active metadata according to the results of the loading process:
 
