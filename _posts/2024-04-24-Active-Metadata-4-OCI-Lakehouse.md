@@ -49,19 +49,16 @@ It's an example of OCI Lakehouse architecture that  initially is made by:
 - **OCI Data Integration**, with a workspace which includes tasks, data loads and pipelines that load data into the ADW data model. As an example, the picture below shows the main pipeline with the steps to load the ADW target tables:
   
   ![Fig.4: OCI Data Integration Pipeline](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/OCIDI-pipeline.png)
-  
 - **OCI Data Catalog**, to manage both technical and business metadata of the Lakehouse data assets, and the entity data lineage based on OCI Data Integration loading tasks:
   
   - Example of entity **technical metadata**:
-
+    
     ![Fig.5: OCI Data Catalog Technical Metadata](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/dcat-customer-technical-metadata.png)
-
   - **Business Glossary**:
-
+    
     ![Fig.6: OCI Data Catalog Business Glossary](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/dcat-business-glossary.png)
-
   - Example of **Data Lineage** metadata:
-
+    
     ![Fig.7: OCI Data Catalog Lineage](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/dcat-lineage.png)
 
 Now we need to add active metadata to promptly inform data consumers about the status of the data assets.
@@ -71,17 +68,17 @@ Now we need to add active metadata to promptly inform data consumers about the s
 When you harvest a data source using Data Catalog, some default properties are created in your data catalog for data entities and attributes. To provide more context to the technical or business metadata, you can leverage OCI Data Catalog Custom Properties. You can create a Custom Property and then link it to the appropriate object type for the metadata enrichment.
 As examples, you might want to create Custom Properties to manage active metadata that can provide information about:
 
-- Availability/unavailability of entities, folders, schemas, or data assets.
-- Results of the last refresh of entities, folders, schemas, or data assets.
-- Date-time of the last refresh of entities, folders, schemas, or data assets.
-- Results of quality checks of entities, folders, schemas, or data assets.
+- **Availability/unavailability** of entities, folders, schemas, or data assets.
+- **Results of the last refresh** of entities, folders, schemas, or data assets.
+- **Date-time of the last refresh** of entities, folders, schemas, or data assets.
+- **Results of quality checks** of entities, folders, schemas, or data assets.
 
 In this article, I create a custom property that gets updated automatically with the outcomes of the most recent data update process. This requires the following steps:
 
 - Adding a **Custom Property** and associate it to the proper Data Catalog objects.
 - Creating **OCI Function** that updates the value of the Custom Property.
-- Using OCI Events to automatically invoke the OCI Function.
-- As alternative, adding Tasks in the OCI Data Integration pipeline to invoke the OCI Function.
+- Using **OCI Events** to automatically invoke the OCI Function.
+- As alternative, adding **Tasks** in the **OCI Data Integration pipeline** to invoke the OCI Function.
 
 ### Adding Custom Properties to OCI Data Catalog objects
 
@@ -113,9 +110,9 @@ But we don't want to manage this property manually, then let's make it ***Active
 ### Creating OCI Function to update OCI Data Catalog custom properties
 
 You can use the specific Data Catalog object update API to set the value of its Custom Properties.
-As examples, I created OCI Functions to update the Custom Properties of a Data Catalog Entity and a Data Catalog Folder (which, in the case of an Oracle DB asset, corresponds to a DB schema).
+As examples, I created OCI Functions to update Custom Properties of a Data Catalog Entity and a Data Catalog Folder (which, in the case of an Oracle DB asset, corresponds to a DB schema).
 
-#### OCI Function to update Entity Custom Properties
+#### OCI Function to update Entity Custom Property
 
 In this first example, the function uses the OCI Python SDK to set the value of a Custom Property of Data Catalog entity.
 
@@ -189,7 +186,7 @@ I also added:
 
 Just to have more immediate information in the OCI Function execution log.
 
-#### OCI Function to update Folder Custom Properties
+#### OCI Function to update Folder Custom Property
 
 In this second example, the function uses the OCI Python SDK to set the value of a Custom Property of Data Catalog Folder.
 
@@ -339,7 +336,7 @@ We have seen how to enable dynamic updating of the Oracle Data Platform's active
 - Impacts on OCI DI Tasks (new Rest tasks and modification of existing Pipeline ones)
 - You can use request payload when invoking OCI Function
 
-Or it might depend on the different fundamental approach that implicitly the two solutions suggest: must the metadata update be part of the data update? Do you want the entire process to result in errors if the metadata update fails for whatever reason, or may it be acceptable that the outcome of the data process is positive regardless of whether their active metadata has been successfully updated? 
+Or it might depend on the different fundamental approach that implicitly the two solutions suggest: must the metadata update be part of the data update? Do you want the entire process to result in errors if the metadata update fails for whatever reason, or may it be acceptable that the outcome of the data process is positive regardless of whether their active metadata has been successfully updated?
 
 Open discussion.
 
@@ -350,3 +347,4 @@ Open discussion.
 - **OCI Python SDK Reference**: [Oracle Documentation](https://docs.oracle.com/en-us/iaas/tools/python/2.126.4/api/landing.html)
 - **OCI Function**: [Oracle Documentation](https://docs.oracle.com/en-us/iaas/Content/Functions/home.htm)
 - **oracle-functions-samples**: [Oracle Github Repository](https://github.com/oracle-samples/oracle-functions-samples)
+
