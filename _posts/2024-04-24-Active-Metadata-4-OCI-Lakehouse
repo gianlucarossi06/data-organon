@@ -1,7 +1,7 @@
 ---
 title: Managing Active Metadata for OCI Lakehouse
 description: Managing active metadata with OCI Data Catalog for an OCI Lkehouse architecture.
-hide : true
+hide : false
 ---
 
 <!-- Google tag (gtag.js) -->
@@ -22,7 +22,7 @@ hide : true
 
 Metadata management is becoming more and more important in Data Platform solutions. Regardless of whether the data architecture is distributed or centralized, users must be able to discover the data, comprehend its technical components, grasp its business significance, learn the quality level, understand the sources of the data, and comprehend how it has been transformed and integrated. Data consumers can use the data to its fullest potential thanks to all of that information, and they also get data trust, which is essential for the solution to be broadly adopted.
 
-The specific categories of metadata known as *active metadata* tell us something about the current state of the data. They make reference to things like their most recent update status and datetime, their availability or unavailability, and their proximity or distance from the SLOs that were previously established for the different quality controls. As a result, they are dynamic metadata by definition. Indeed, active.
+The specific categories of metadata known as *active metadata* tell us something about the current state of the data. They make reference to things like their most recent update status and time, their availability or unavailability, and their proximity or distance from the SLOs that were previously established for the different quality controls. As a result, they are dynamic metadata by definition. Indeed, active.
 
 In this article, I focus on enabling and managing *active metadata* for a Lakehouse solution in OCI.
 
@@ -106,13 +106,13 @@ But we don't want to manage this property manually, then let's make it ***Active
 ### Creating OCI Function to update OCI Data Catalog custom properties
 
 You can use the specific Data Catalog object update API to set the value of its Custom Properties.
-As example, I created an OCI Function to update the Custom Properties of a Data Catalog folder (which, in the case of an Oracle DB asset, corresponds to a DB schema).
-
-<!--
+As examples, I created OCI Functions to update the Custom Properties of a Data Catalog Entity and of a Folder (which, in the case of an Oracle DB asset, corresponds to a DB schema).
 
 #### OCI Function to update Entity Custom Properties
 
-This OCI Function uses the OCI Python SDK to set the value of the Custom Properties of a Data Catalog entity:
+This OCI Function uses the OCI Python SDK to set the value of the Custom Properties of a Data Catalog entity.
+
+***oci-datacatalog-update-customproperties-python***:
 
 ```
 import io
@@ -155,7 +155,7 @@ entity_business_name = body["entity_business_name"]
 custom_property_key = body["custom_property_key"]
 custom_property_display_name = body["custom_property_display_name"]
 custom_property_value = body["custom_property_value"]
-catalog_id = "ocid1.datacatalog.oc1.eu-milan-1.amaaaaaa7ratczialjb5nspdchv6vsdroxnepy62qbg6h7en24qpjzjrojjq"
+catalog_id = "ocid1.datacatalog.oc1.eu-milan-1.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxq"
 
 logging.getLogger().info(f'Updating Entity "{entity_business_name}": setting Custom Property "{custom_property_display_name}" value to "{custom_property_value}"')
 
@@ -165,7 +165,7 @@ except (Exception, ValueError) as ex:
 logging.getLogger().error(str(ex))
 ```
 
-Since I need to update a Custom Properties of a Data Catalog entity, a function requires at least the following input parameters:
+Since I need to update a Custom Property of a Data Catalog entity, a function requires at least the following input parameters:
 
 - data_asset_key
 - entity_key
@@ -173,7 +173,7 @@ Since I need to update a Custom Properties of a Data Catalog entity, a function 
 - custom_property_value
 - catalog_id
 
-> Note: the data_asset_key and catalog_id are information that you can get from Data Catalog UI, while to discover *entity_key* and *custom_properties_key* you need to use the Data Catalog API.
+> Note: the *data_asset_key* and *catalog_id* are information that you can get from Data Catalog UI, while to discover *entity_key* and *custom_properties_key* you need to use the Data Catalog API (I used the *oci-cli* commands directly in the OCI Cloud shell).
 
 I also added:
 
@@ -181,11 +181,12 @@ I also added:
 * custom_property_display_name
 
 Just to have more immediate information in the OCI Function execution log.
--->
 
 #### OCI Function to update Folder Custom Properties
 
-This OCI Function uses the OCI Python SDK to set the value of the Custom Properties of a Data Catalog folder:
+This OCI Function uses the OCI Python SDK to set the value of the Custom Properties of a Data Catalog folder.
+
+***oci-datacatalog-update-customproperties-folder-ok-python*:**
 
 ```
 import io
@@ -223,13 +224,13 @@ def handler(ctx, data: io.BytesIO=None):
     resp   = ""
     try:
         #body = json.loads(data.getvalue())
-        data_asset_key = "1e85bda4-aab3-4957-966a-e34229eed014"
+        data_asset_key = "1e85bda4-xxxx-xxxx-xxxx-e34229eed014"
         folder_display_name = "ADWUSER01"
-        folder_key = "84a8a0e3-8751-439d-9973-73c3f97ae1da"
-        custom_property_key = "a66ad67c-77a0-449c-8682-257e6acf744a"
+        folder_key = "84a8a0e3-xxxx-xxxx-xxxx-73c3f97ae1da"
+        custom_property_key = "a66ad67c-xxxx-xxxx-xxxx-257e6acf744a"
         custom_property_display_name = "Data Refresh"
         custom_property_value = "Last Update Available"
-        catalog_id = "ocid1.datacatalog.oc1.eu-milan-1.amaaaaaa7ratczialjb5nspdchv6vsdroxnepy62qbg6h7en24qpjzjrojjq"
+        catalog_id = "ocid1.datacatalog.oc1.eu-milan-1.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxq"
 
         logging.getLogger().info(f'Updating Folder "{folder_display_name}": setting Custom Property "{custom_property_display_name}" value to "{custom_property_value}"')
 
@@ -238,15 +239,15 @@ def handler(ctx, data: io.BytesIO=None):
         logging.getLogger().error(str(ex))
 ```
 
-> Note: the *data_asset_key* and *catalog_id* are information that you can get from Data Catalog UI, while to discover *folder_key* and *custom_properties_key* you need to use the Data Catalog API (in my case I used oci-cli directly in the Cloud Shell).
+Now I can use those functions to update the active metadata *Data Refresh* according to the results of the data update process.
 
-Now I can use this function to update the active metadata *Data Refresh* according to the results of the data update process.
-
-### Option 1: Leveraging OCI Events to update custom properties
+### Option 1: Updating Active Metadata with OCI Events
 
 Events generated by OCI Data Integration can be utilized to build rules that enable the automation of the active metadata update.
 In this example, I want to update the Custom Property *Data Refresh* of the ADW schema *ADWUSER01* according to the status of the OCI Data Integration pipeline task in charge of updating all the tables of that schema.
-Then I create two events rule, one that executes an OCI Function in case the OCI DI Task *Load DWH Pipeline Task* runs successfully and the other one that execute a Function in case the same task ends with errors.
+Then I create two events rule, one that executes an OCI Function in case the OCI DI Task *Load DWH Pipeline Task* runs successfully and the other one that execute another OCI Function in case the same task ends with errors.
+
+> Note: When an OCI Event invokes an OCI Function, you cannot specify input parameters. Then in these examples, I used the OCI Function described in the [above paragraph](###-oci-function-to-update-folder-custom-properties) and another one very similar (named *oci-datacatalog-update-customproperties-folder-ko-python*), with the only difference that it updates the Folder Custom Properties with the proper value in the event of an error (*Last Update Not Available*).
 
 Rule ***oci-data-integration-pipeline-ADW-success***:
 
@@ -254,7 +255,7 @@ Rule ***oci-data-integration-pipeline-ADW-success***:
   * Service: *Data Integration*
   * Event Type: *Execute Task - End*
 * **Attributes**:
-  * taskKey: *177322d6-1d11-4406-8025-1fd15b182d25* (Key of the *Load DWH Pipeline Task*, visible in the OCI Data Integration UI))
+  * taskKey: *177322d6-xxxx-xxxx-xxxx-1fd15b182d25* (Key of the *Load DWH Pipeline Task*, visible in the OCI Data Integration UI))
   * TaskStatus: *SUCCESS* (uppercase)
 * **Action**:
   * Function *oci-datacatalog-update-customproperties-folder-ok-python*
@@ -267,7 +268,7 @@ Rule ***oci-data-integration-pipeline-ADW-error***:
   * Service: *Data Integration*
   * Event Type: *Execute Task - End*
 * **Attributes**:
-  * taskKey: *177322d6-1d11-4406-8025-1fd15b182d25* (key of the *Load DWH Pipeline Task*)
+  * taskKey: *177322d6-xxxx-xxxx-xxxx-1fd15b182d25* (key of the *Load DWH Pipeline Task*)
   * TaskStatus: *ERROR* (uppercase)
 * **Action**:
   * Function *oci-datacatalog-update-customproperties-folder-ko-python*
@@ -282,29 +283,36 @@ I initially set the value of *Data Refresh* for the ADW Schema *ADWUSER01* as *"
 
 If I run the pipeline task, and it completes successfully:
 
-![Fig.14: Pipeline Task Runs Successfully](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/pipeline-run-success.png)
+![Fig.14: Pipeline Task Runs Successfully](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/pipeline-load-dwh-success.png)
 
 I can see the Custom Properties updated accordingly:
 
-![Fig.15: Custom Properties Updated on Success](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/custom-properties-run-success.png)
+![Fig.15: Custom Properties Updated on Success](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/schema-data-refresh-available.png)
 
 Then, as a test, I rerun the pipeline making it fail intentionally (I stopped the ADW instance):
 
-![Fig.16: Pipeline Task Run with errors](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/pipeline-run-error.png)
+![Fig.16: Pipeline Task Run with errors](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/pipeline-load-dwh-error.png)
 
 And the active metadata now shows the value expected in the event of an error:
 
-![Fig.17: Custom Properties Updated on Error](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/custom-properties-run-error.png)
+![Fig.17: Custom Properties Updated on Error](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/schema-data-refresh-not-available.png)
 
-### Option 2: Updating Custom Properties with OCI Data Integration task
+### Option 2: Updating Active Metadata with OCI Data Integration task
 
 By including OCI Data Integration RestAPI tasks that make use of OCI Functions RestAPI endpoints, updating the Custom Properties can also be a part of the data pipelines process in OCI Data Integration.
 
-In this case, I create two OCI Data Integration RestAPI tasks which invoke the same OCI Functions used in the event rules (one for *Success* case the other for the *Error* case). Below, as an example, you can see one of the two RestAPI tasks:
+For this article, I created two OCI Data Integration RestAPI tasks which invoke the OCI Function that updates an entity Custom Properties (see [OCI Function to update Entity Custom Properties](####oci-function-to-update-entity-custom-properties)).
+As example, below you can see the RestAPI task built for the successful updates of the *Customer* entity (which is the ADW table *CUSTOMER_TARGET*):
 
 ![Fig.18: RestAPI task OCI Data Integration](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/oci-di-rest-api-task.png)
 
+The details of the RestAPI shows the OCI Function endpoint configured as URL for the POST method and, in the request section, the JSON structure with the OCI Function input parameters values:
 
+![Fig.19: OCI DI RestAPI task details](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/rest-task-details.png)
+
+Finally, I add two tasks to the pipeline that loads ADW tables to update the *Customer* active metadata according to the results of the loading process:
+
+![Fig.20: Load DWH Pipeline with Active Metadata update](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/pipleine-active-metadata-task.png)
 
 ## Conclusion
 
