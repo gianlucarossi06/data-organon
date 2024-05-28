@@ -104,9 +104,9 @@ The picture below shows the Custom Properties creation:
 
 Since it's enabled for all the data catalog types, I can start using it. For example, I can set its value as *Not Known* for the *Customer* data entity:
 
-![Fig.9: Setting Custom Properties Value](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/setting-property-value.png)
+![Fig.9: Edit Property Value](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/setting-property-value.png)
 
-![Fig.10: Setting Custom Properties Value](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/customer-property-notknown.png)
+![Fig.10: Custom Property Value](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/customer-property-notknown.png)
 
 But we don't want to manage this property manually, then let's make it ***Active***!
 
@@ -288,17 +288,21 @@ I initially set the value of *Data Refresh* for the ADW Schema *ADWUSER01* as *"
 
 ![Fig.13: Data Refresh Initial Status](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/adw-schema-data-refresh-initial-status.png)
 
-Then I run the pipeline task that completes successfully:
+I run the pipeline task that completes successfully:
 
 ![Fig.14: Pipeline Task Runs Successfully](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/pipeline-load-dwh-success.png)
 
-Finally, I can see the Custom Properties updated accordingly:
+The OCI Events log shows that there's been an event rule match:
 
-![Fig.15: Custom Properties Updated on Success](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/schema-data-refresh-available.png)
+![Fig.15: Matching Event for Successful run](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/event-success-execution-log.png)
+
+As a consequence, the Custom Properties is updated accordingly:
+
+![Fig.16: Custom Properties Updated on Success](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/schema-data-refresh-available.png)
 
 As a test, I rerun the pipeline making it fail intentionally (the ADW instance is not active):
 
-![Fig.16: Pipeline Task Run with errors](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/pipeline-load-dwh-error.png)
+![Fig.17: Pipeline Task Run with errors](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/pipeline-load-dwh-error.png)
 
 And the active metadata now shows the value expected in the event of an error:
 
