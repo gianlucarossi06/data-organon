@@ -323,7 +323,18 @@ The details of the RestAPI shows the OCI Function endpoint configured as URL for
 
 Finally, I add two tasks to the pipeline that loads ADW tables to update the *Customer* active metadata according to the results of the loading process:
 
-![Fig.20: Load DWH Pipeline with Active Metadata update](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/pipleine-active-metadata-task.png)
+![Fig.20: Load DWH Pipeline with Active Metadata update](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/pipeline-active-metadata-task.png)
 
 ## Conclusion
 
+We have seen how to enable dynamic updating of the Oracle Data Platform's active metadata. The choice between the two suggested methods, use of OCI Events or OCI DI Tasks, might depend on the weight you want to give to a couple of aspects that characterize the two solutions:
+
+OCI Event: 
+ - No impact for existing or new OCI DI Tasks.
+ - You cannot use OCI Function request payload (that means no usage of parameters, thus higher number of OCI Function deployments, potentially)
+
+OCI DI Task:
+- Impacts on OCI DI Tasks (new Rest tasks and modification of existing Pipeline ones)
+- You can use request payload when invoking OCI Function
+
+## References
