@@ -23,7 +23,7 @@ Metadata management is becoming more and more important in Data Platform solutio
 
 The specific categories of metadata known as *active metadata* tell us something about the current state of the data. They make reference to things like their most recent update status and time, their availability or unavailability, and their proximity or distance from the SLOs that were previously established for the different quality controls. As a result, they are dynamic metadata by definition. Indeed, active.
 
-In this article, I focus on enabling and managing *active metadata* for a Data Platform solution in OCI.
+In this article, I focus on enabling and managing ***active metadata*** for a Data Platform solution in OCI. I will show how you can automatically update load status property in **OCI Data Catalog** based on the result of **OCI Data Integration** pipeline. Naturally, the same concept could be extended to other types of properties.
 
 <!--
 
@@ -71,7 +71,7 @@ As an example, you might want to create Custom Properties to manage active metad
 - **Availability/unavailability** of entities, folders, schemas, or data assets.
 - **Results of the last refresh** of entities, folders, schemas, or data assets.
 - **Date-time of the last refresh** of entities, folders, schemas, or data assets.
-- **Results of quality checks** of entities, folders, schemas, or data assets.
+- **Results of data validation checks** of entities, folders, schemas, or data assets.
 
 In this article, I create a custom property that gets updated automatically with the outcomes of the most recent data update process. This requires the following steps:
 
