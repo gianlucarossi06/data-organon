@@ -17,22 +17,15 @@ description: Managing active metadata with OCI Data Catalog for an Oracle Data P
 
 ![](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/ACTIVE-METADATA.jpeg)
 
+Sometimes, being active at the right time is crucial to achieving goals successfully.
+
 ## **Introduction**
 
 Metadata management is becoming more and more important in Data Platform solutions. Regardless of whether the data architecture is distributed or centralized, users must be able to discover the data, comprehend its technical components, grasp its business significance, learn the quality level, understand the sources of the data, and comprehend how it has been transformed and integrated. Data consumers can use the data to its fullest potential thanks to all of that information, and they also get data trust, which is essential for the solution to be broadly adopted.
 
-The specific categories of metadata known as *active metadata* tell us something about the current state of the data. They make reference to things like their most recent update status and time, their availability or unavailability, and their proximity or distance from the SLOs that were previously established for the different quality controls. As a result, they are dynamic metadata by definition. Indeed, active.
+The specific categories of metadata known as ***active metadata*** tell us something about the current state of the data. They make reference to things like their most recent update status and time, their availability or unavailability, and their proximity or distance from the SLOs that were previously established for the different validation controls. As a result, they are dynamic metadata by definition. Indeed, active.
 
 In this article, I focus on enabling and managing ***active metadata*** for a Data Platform solution in OCI. I will show how you can automatically update load status property in **OCI Data Catalog** based on the result of **OCI Data Integration** pipeline. Naturally, the same concept could be extended to other types of properties.
-
-<!--
-
-Architecture deployment and description of the components functionality.
-
-In this article, I go over how to set up the disaster recovery solution for the data server engine, the **Autonomous Data Warehouse**, and the integrated external storage, **OCI Object Storage**, which make up the core of persistence and data serving layer of this OCI Lakehouse architecture.
-
-![Fig.1: Active Metatadata for OCI Lakehouse - Architecture Deployment](/data-organon/images/2024-04-24-Active-Metadata-4-OCI-Lakehouse/Active-Metadata-Physical-Deployment.png)
--->
 
 ## Starting Solution
 
